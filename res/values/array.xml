@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="spinnerVreme">
+        <item>Vreme uzimanja:</item>
+        <item>06:00</item>
+        <item>06:30</item>
+        <item>07:00</item>
+        <item>07:30</item>
+        <item>08:00</item>
+        <item>08:30</item>
+        <item>09:00</item>
+        <item>09:30</item>
+        <item>10:00</item>
+        <item>10:30</item>
+        <item>11:00</item>
+        <item>11:30</item>
+    </string-array>
+    <string-array name="spinnerKolicina">
+        <item>Kolicina:</item>
+        <item>Pola tablete</item>
+        <item>Jedna tableta</item>
+        <item>Dve tablete</item>
+        <item>Tri tablete</item>
+        <item>Više</item>
+    </string-array>
+
+</resources>
