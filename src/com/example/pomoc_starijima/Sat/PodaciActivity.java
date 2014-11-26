@@ -1,10 +1,6 @@
 package com.example.pomoc_starijima.Sat;
 
 import com.example.pomoc_starijima.R;
-import com.example.pomoc_starijima.R.anim;
-import com.example.pomoc_starijima.R.id;
-import com.example.pomoc_starijima.R.layout;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -17,8 +13,9 @@ import android.widget.Button;
 
 public class PodaciActivity extends Activity {
 
-	Button btnPodaciRodj, btnPodaciLekar, btnPodaciSlave, btnPodaciPomen, btnNazad;
-	
+	Button btnPodaciRodj, btnPodaciLekar, btnPodaciSlave, btnPodaciPomen,
+			btnNazad;
+
 	private Handler mHandler = new Handler();
 
 	@Override
@@ -39,7 +36,8 @@ public class PodaciActivity extends Activity {
 
 					@Override
 					public void run() {
-						Intent i1 = new Intent("com.example.pomoc_starijima.podaciRodj");
+						Intent i1 = new Intent(
+								"com.example.pomoc_starijima.podaciRodj");
 						startActivity(i1);
 					}
 				}, 260);
@@ -56,13 +54,14 @@ public class PodaciActivity extends Activity {
 
 					@Override
 					public void run() {
-						Intent i1 = new Intent("com.example.pomoc_starijima.podaciLekar");
+						Intent i1 = new Intent(
+								"com.example.pomoc_starijima.podaciLekar");
 						startActivity(i1);
 					}
 				}, 260);
 			}
 		});
-		
+
 		btnNazad.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -84,9 +83,9 @@ public class PodaciActivity extends Activity {
 		btnPodaciRodj = (Button) findViewById(R.id.btnPodaciRodjendani);
 		btnPodaciLekar = (Button) findViewById(R.id.btnPodaciLekar);
 		btnPodaciSlave = (Button) findViewById(R.id.btnPodaciSlave);
-		btnPodaciPomen = (Button) findViewById(R.id.btnPodaciPomeni);	
+		btnPodaciPomen = (Button) findViewById(R.id.btnPodaciPomeni);
 		btnNazad = (Button) findViewById(R.id.btnPodaciNazad);
-		
+
 	}
 
 }

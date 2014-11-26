@@ -28,7 +28,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Sat.SatActivity"
+            android:name=".sat.satActivity"
             android:label="@string/title_activity_sat"
             android:screenOrientation="portrait" >
             <intent-filter>
@@ -38,7 +38,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Poruka.PorukaActivity"
+            android:name=".poruka.porukaActivity"
             android:label="@string/title_activity_poruka"
             android:screenOrientation="portrait" >
             <intent-filter>
@@ -48,7 +48,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Poruka.SendPorukuX"
+            android:name=".poruka.sendPorukuX"
             android:label="@string/title_activity_poruka"
             android:screenOrientation="portrait" >
             <intent-filter>
@@ -58,7 +58,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Stetoskop.StetoskopActivity"
+            android:name=".stetoskop.stetoskopActivity"
             android:label="@string/title_activity_stetoskop"
             android:screenOrientation="portrait" >
             <intent-filter>
@@ -68,7 +68,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Stetoskop.TerapijaActivity"
+            android:name=".stetoskop.terapijaActivity"
             android:label="@string/title_activity_terapija1"
             android:screenOrientation="portrait" >
             <intent-filter>
@@ -78,7 +78,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".PodesavanjaActivity"
+            android:name=".podesavanjaActivity"
             android:label="@string/title_activity_podesavanja"
             android:screenOrientation="portrait" >
             <intent-filter>
@@ -88,7 +88,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Sat.RodjendanActivity"
+            android:name=".sat.rodjendanActivity"
             android:label="@string/title_activity_rodjendan"
             android:screenOrientation="portrait" >
             <intent-filter>
@@ -98,7 +98,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Sat.PodaciActivity"
+            android:name=".sat.podaciActivity"
             android:label="@string/title_activity_lista"
             android:screenOrientation="portrait" >
             <intent-filter>
@@ -108,7 +108,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Sat.PodaciRodjendanActivity"
+            android:name=".sat.podaciRodjendanActivity"
             android:label="@string/title_activity_listaR"
             android:screenOrientation="portrait" >
             <intent-filter>
@@ -117,10 +117,8 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-       
-       
         <activity
-            android:name=".Sat.PreglediActivity"
+            android:name=".sat.preglediActivity"
             android:label="@string/title_activity_pregledi"
             android:screenOrientation="portrait" >
             <intent-filter>
@@ -131,7 +129,7 @@
         </activity>
 
         <receiver
-            android:name=".Stetoskop.AlarmReceiverTerapija"
+            android:name=".stetoskop.alarmReceiverTerapija"
             android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
@@ -139,7 +137,7 @@
         </receiver>
 
         <activity
-            android:name=".Sat.SlavaActivity"
+            android:name=".sat.slavaActivity"
             android:label="@string/title_activity_slava"
             android:screenOrientation="portrait" >
             <intent-filter>
@@ -149,7 +147,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Sat.PomeniActivity"
+            android:name=".sat.pomeniActivity"
             android:label="@string/title_activity_pomeni"
             android:screenOrientation="portrait" >
             <intent-filter>
@@ -158,12 +156,11 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        
         <activity
-            android:name="com.example.pomoc_starijima.Sat.PodaciLekarActivity"
+            android:name="com.example.pomoc_starijima.sat.podaciLekarActivity"
             android:label="@string/title_activity_podaci_lekar"
-            android:screenOrientation="portrait"  >
-             <intent-filter>
+            android:screenOrientation="portrait" >
+            <intent-filter>
                 <action android:name="com.example.pomoc_starijima.podaciLekar" />
 
                 <category android:name="android.intent.category.DEFAULT" />

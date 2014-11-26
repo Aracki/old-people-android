@@ -3,11 +3,6 @@ package com.example.pomoc_starijima.Poruka;
 import java.util.LinkedList;
 
 import com.example.pomoc_starijima.R;
-import com.example.pomoc_starijima.R.anim;
-import com.example.pomoc_starijima.R.drawable;
-import com.example.pomoc_starijima.R.id;
-import com.example.pomoc_starijima.R.layout;
-
 import baze.SQLitePrimeriPoruka;
 
 import android.app.Activity;
@@ -22,7 +17,6 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.TextView;
 
 public class PorukaActivity extends Activity {
 
@@ -96,7 +90,6 @@ public class PorukaActivity extends Activity {
 	public void initialize() {
 		back = (Button) findViewById(R.id.btnNazadPoruka);
 		lista = (ListView) findViewById(R.id.listaPoruka);
-		
 
 		if (db.vratiBrojPrimera() == 0) {
 			db.dodajPrimer("Hitno me pozovi!");
@@ -104,13 +97,12 @@ public class PorukaActivity extends Activity {
 			db.dodajPrimer("Spremila sam pihtije pozuri!");
 			db.dodajPrimer("Kupi mi kurir!");
 			db.dodajPrimer("Svaka cast vucicu, digli nam penzije");
-		;
+			;
 		}
 
-		int duzina = db.vratiBrojPrimera();
+		// int duzina = db.vratiBrojPrimera();
 		String[] poruke = new String[] { db.vratiPrimer(1), db.vratiPrimer(2),
 				db.vratiPrimer(3), db.vratiPrimer(4), db.vratiPrimer(5),
-				
 
 		};
 

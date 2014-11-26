@@ -6,10 +6,6 @@ import java.io.InputStreamReader;
 
 import com.example.pomoc_starijima.MainActivity;
 import com.example.pomoc_starijima.R;
-import com.example.pomoc_starijima.R.anim;
-import com.example.pomoc_starijima.R.id;
-import com.example.pomoc_starijima.R.layout;
-
 import baze.SQLitePrimeriPoruka;
 import android.app.Activity;
 import android.content.Intent;
@@ -118,16 +114,16 @@ public class SendPorukuX extends Activity {
 				}, 260);
 			}
 		});
-		
+
 		txtPhoneNumb.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				Toast t1 = Toast.makeText(getApplicationContext(),
 						"BROJ SE MENJA U PODEŠAVANJIMA", Toast.LENGTH_LONG);
 				t1.setDuration(2000);
 				t1.show();
-				
+
 			}
 		});
 	}
@@ -148,7 +144,7 @@ public class SendPorukuX extends Activity {
 		textSMS = (EditText) findViewById(R.id.txtSMSporukaX);
 		txtSms = (TextView) findViewById(R.id.textViewSMS);
 		txtPhoneNumb.setText(vratiBroj());
-//		txtPhoneNumbV.setClickable(true);
+		// txtPhoneNumbV.setClickable(true);
 	}
 
 	// metoda iz podesavanjaAct

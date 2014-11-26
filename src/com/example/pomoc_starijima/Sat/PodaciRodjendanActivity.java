@@ -39,7 +39,9 @@ public class PodaciRodjendanActivity extends Activity {
 					public void onItemClick(AdapterView<?> parent, View view,
 							int position, long id) {
 						final int positionToRemove = position;
-						View viewToRemove = view;
+
+						// View viewToRemove = view;
+
 						// Intent i1 = new
 						// Intent("com.example.pomoc_starijima.RODJENDAN");
 						// startActivity(i1);

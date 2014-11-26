@@ -1,10 +1,6 @@
 package com.example.pomoc_starijima.Sat;
 
 import com.example.pomoc_starijima.R;
-import com.example.pomoc_starijima.R.anim;
-import com.example.pomoc_starijima.R.id;
-import com.example.pomoc_starijima.R.layout;
-
 //import android.support.v7.app.ActionBarActivity;
 import android.app.Activity;
 import android.content.Intent;
@@ -14,7 +10,6 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
-import android.widget.TextView;
 
 public class SatActivity extends Activity {
 

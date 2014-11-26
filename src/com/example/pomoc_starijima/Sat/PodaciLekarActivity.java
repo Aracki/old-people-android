@@ -5,28 +5,19 @@ import java.util.List;
 
 import baze.SQLitePregledi;
 
-
-import com.example.pomoc_starijima.CustomAdapter;
 import com.example.pomoc_starijima.CustomAdapterLekar;
 import com.example.pomoc_starijima.R;
-import com.example.pomoc_starijima.R.id;
-import com.example.pomoc_starijima.R.layout;
-import com.example.pomoc_starijima.R.menu;
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
 public class PodaciLekarActivity extends Activity {
-
 
 	ListView listaPregleda;
 	SQLitePregledi db;
@@ -47,7 +38,9 @@ public class PodaciLekarActivity extends Activity {
 					public void onItemClick(AdapterView<?> parent, View view,
 							int position, long id) {
 						final int positionToRemove = position;
-						View viewToRemove = view;
+
+						// View viewToRemove = view;
+
 						// Intent i1 = new
 						// Intent("com.example.pomoc_starijima.RODJENDAN");
 						// startActivity(i1);
@@ -65,7 +58,8 @@ public class PodaciLekarActivity extends Activity {
 										Log.d("PozitionToRemove",
 												Integer.toString(p1));
 										Log.d("Ime", p.getImeBolnice());
-//										Log.d("id", Integer.toString(r.getId()));
+										// Log.d("id",
+										// Integer.toString(r.getId()));
 										db.obrisiPregled(p.getId());
 										napuniPreglede();
 										finish();
@@ -116,8 +110,8 @@ public class PodaciLekarActivity extends Activity {
 		if (pregledi.isEmpty()) {
 
 		} else {
-			CustomAdapterLekar ca = new CustomAdapterLekar(this, R.layout.list_item,
-					R.id.title1, pregledi);
+			CustomAdapterLekar ca = new CustomAdapterLekar(this,
+					R.layout.list_item, R.id.title1, pregledi);
 
 			// ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(this,
 			// R.layout.list_item, R.id.title, programi);
@@ -144,7 +138,7 @@ public class PodaciLekarActivity extends Activity {
 				String time = ID_II_DD_VV[3];
 				String[] dateArray = date.split("/");
 				String[] timeArray = time.split(" : ");
-				
+
 				int ss = Integer.parseInt(timeArray[0]);
 				int min = Integer.parseInt(timeArray[1]);
 

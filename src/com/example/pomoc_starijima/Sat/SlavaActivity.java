@@ -3,29 +3,16 @@ package com.example.pomoc_starijima.Sat;
 import baze.SQLiteSlave;
 
 import com.example.pomoc_starijima.R;
-import com.example.pomoc_starijima.R.id;
-import com.example.pomoc_starijima.R.layout;
-//import com.example.pomoc_starijima.R.menu;
-
-//import android.support.v7.app.ActionBarActivity;
-//import android.support.v7.app.ActionBar;
-//import android.support.v4.app.Fragment;
-//import android.support.v4.app.FragmentActivity;
-//import android.support.v4.app.FragmentManager;
-//import android.support.v4.app.DialogFragment;
 import android.app.Activity;
 import android.app.DialogFragment;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 

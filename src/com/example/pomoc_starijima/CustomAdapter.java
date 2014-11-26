@@ -8,7 +8,6 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebView.FindListener;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
@@ -29,7 +28,7 @@ public class CustomAdapter extends ArrayAdapter<_Rodjendan> {
 		if (v == null) {
 			LayoutInflater vi;
 			vi = LayoutInflater.from(getContext());
-			v = vi.inflate(R.layout.list_item, null);
+			v = vi.inflate(R.layout.list_item, parent, false);
 		}
 
 		_Rodjendan r = getItem(position);
@@ -38,8 +37,8 @@ public class CustomAdapter extends ArrayAdapter<_Rodjendan> {
 			TextView tv1 = (TextView) v.findViewById(R.id.title1);
 
 			if (tv1 != null) {
-				tv1.setText(r.getIme()+ " " + r.getPrezime()+ " " + r.getDay()
-						+ " "+ r.getMonth());
+				tv1.setText(r.getIme() + " " + r.getPrezime() + " "
+						+ r.getDay() + " " + r.getMonth());
 			}
 		}
 

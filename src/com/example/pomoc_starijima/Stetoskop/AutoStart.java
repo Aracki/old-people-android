@@ -1,10 +1,8 @@
 package com.example.pomoc_starijima.Stetoskop;
 
-import java.sql.Date;
 import java.util.Calendar;
 
 import baze.SQLiteTerapija;
-import android.R;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
@@ -12,7 +10,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 import android.view.Gravity;
 import android.widget.Toast;
 
@@ -65,13 +62,6 @@ public class AutoStart extends BroadcastReceiver {
         PendingIntent sender = PendingIntent.getBroadcast(context, 0,
     i, PendingIntent.FLAG_UPDATE_CURRENT | Intent.FILL_IN_DATA);
         am.setRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), AlarmManager.INTERVAL_DAY, sender); // Millisec * Second * Minute
-    }
+	}
 
-
-
-
-
-
-    
-    
 }

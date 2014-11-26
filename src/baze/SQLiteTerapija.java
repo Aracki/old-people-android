@@ -10,8 +10,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Environment;
 import android.util.Log;
-import android.view.Gravity;
-import android.widget.Toast;
 
 public class SQLiteTerapija extends SQLiteOpenHelper {
 
@@ -119,35 +117,6 @@ public class SQLiteTerapija extends SQLiteOpenHelper {
 
 	}
 
-	public String vratiNaziv1(int id) {
-
-		SQLiteDatabase db = this.getReadableDatabase();
-
-		Cursor y = queueAll();
-
-		String x = "";
-		if (y.moveToNext()) {
-			x += y.getString(0) + " " + y.getString(1);
-		}
-
-		return x;
-	}
-
-	public String vratiNaziv() {
-
-		SQLiteDatabase db = this.getReadableDatabase();
-
-		Cursor y = db.query(getTableTerapija(), getColumns(), null, null, null,
-				null, null, null);
-
-		String x = "";
-		if (y.moveToNext()) {
-			x += y.getString(1);
-		}
-
-		return x;
-	}
-
 	public String vratiID() {
 
 		SQLiteDatabase db = this.getReadableDatabase();
@@ -203,32 +172,32 @@ public class SQLiteTerapija extends SQLiteOpenHelper {
 		return COLUMNS;
 	}
 
-	 public int updateTerapija(int id, String s, String sat, String minut, String k, String a, String p1, String p2)
-	 {
-	
-	 // 1. get reference to writable DB
-	 SQLiteDatabase db = this.getWritableDatabase();
-	
-	 // 2. create ContentValues to add key "column"/value
-	 ContentValues values = new ContentValues();
-	 values.put("spisak", s);
-	 values.put("sat", sat);
-	 values.put("minut", minut);
-	 values.put("kolicina", k);
-	 values.put("aktivna", a);
-	 values.put("pozicija1", p1);
-	 values.put("pozicija2", p2);
-	
-	 // 3. updating row
-	 int i = db.update(TABLE_TERAPIJA, // table
-	 values, // column/value
-	 "id=?", // selections
-	 new String[] { String.valueOf(id) }); // selection args
-	
-	 // 4. close
-	 db.close();
-	
-	 return i;
-	
-	 }
+	public int updateTerapija(int id, String s, String sat, String minut,
+			String k, String a, String p1, String p2) {
+
+		// 1. get reference to writable DB
+		SQLiteDatabase db = this.getWritableDatabase();
+
+		// 2. create ContentValues to add key "column"/value
+		ContentValues values = new ContentValues();
+		values.put("spisak", s);
+		values.put("sat", sat);
+		values.put("minut", minut);
+		values.put("kolicina", k);
+		values.put("aktivna", a);
+		values.put("pozicija1", p1);
+		values.put("pozicija2", p2);
+
+		// 3. updating row
+		int i = db.update(TABLE_TERAPIJA, // table
+				values, // column/value
+				"id=?", // selections
+				new String[] { String.valueOf(id) }); // selection args
+
+		// 4. close
+		db.close();
+
+		return i;
+
+	}
 }

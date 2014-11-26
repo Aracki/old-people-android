@@ -11,7 +11,7 @@ import android.os.Environment;
 public class SQLiteRodjendani extends SQLiteOpenHelper {
 
 	private static final int DATABASE_VERSION = 1;
-	private static final String DATABASE_NAME = "RodjendaniRXX";
+	private static final String DATABASE_NAME = "Rodjendani5";
 	private static final String TABLE_RODJENDANI = "Rodjendani";
 
 	// private static final String DATABASE_PATH =
