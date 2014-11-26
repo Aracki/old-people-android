@@ -35,11 +35,11 @@ public class CustomAdapter extends ArrayAdapter<_Rodjendan> {
 		_Rodjendan r = getItem(position);
 
 		if (r != null) {
-			TextView tv1 = (TextView) v.findViewById(R.id.title);
+			TextView tv1 = (TextView) v.findViewById(R.id.title1);
 
 			if (tv1 != null) {
-				tv1.setText(r.getIme() + r.getPrezime() + r.getDay()
-						+ r.getMonth());
+				tv1.setText(r.getIme()+ " " + r.getPrezime()+ " " + r.getDay()
+						+ " "+ r.getMonth());
 			}
 		}
 

@@ -36,8 +36,10 @@ public class Vreme extends DialogFragment implements
 		// Do something with the time chosen by the user
 		if (x == 'P') {
 			PreglediActivity.staviVreme.setText(hourOfDay + " : " + minute);
-		} else if (x == 'T') {
-			TvProgramActivity.staviVreme.setText(hourOfDay + " : " + minute);
 		}
+//		 else if (x == 'T') {
+//			TvProgramActivity.staviVreme.setText(hourOfDay + " : " + minute);
+//		}
+	
 	}
 }

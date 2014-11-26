@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.pomoc_starijima"
     android:versionCode="1"
@@ -116,26 +117,8 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".Sat.PodaciTVprogramActivity"
-            android:label="@string/title_activity_listaTV"
-            android:screenOrientation="portrait" >
-            <intent-filter>
-                <action android:name="com.example.pomoc_starijima.podaciTV" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".Sat.TvProgramActivity"
-            android:label="@string/title_activity_tv_program"
-            android:screenOrientation="portrait" >
-            <intent-filter>
-                <action android:name="com.example.pomoc_starijima.TVPROGRAM" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
+       
+       
         <activity
             android:name=".Sat.PreglediActivity"
             android:label="@string/title_activity_pregledi"
@@ -175,14 +158,16 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        
         <activity
-            android:name=".Stetoskop.MyAlarmService"
-            android:enabled="true"
-            android:label="@string/title_activity_my_alarm_service" >
-        </activity>
-        <activity
-            android:name=".Stetoskop.ConfirmAlarmDialog"
-            android:label="@string/title_activity_confirm_alarm_dialog" >
+            android:name="com.example.pomoc_starijima.Sat.PodaciLekarActivity"
+            android:label="@string/title_activity_podaci_lekar"
+            android:screenOrientation="portrait"  >
+             <intent-filter>
+                <action android:name="com.example.pomoc_starijima.podaciLekar" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity>
     </application>
 

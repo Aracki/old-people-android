@@ -22,12 +22,13 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class SendPorukuX extends Activity {
 
 	Button btnSend, btnNazad, btnSacuvaj;
-	EditText textPhoneNo;
+	TextView txtPhoneNumb, txtPhoneNumbV, txtSms;
 	EditText textSMS;
 	SQLitePrimeriPoruka db = new SQLitePrimeriPoruka(this);
 	private Handler mHandler = new Handler();
@@ -55,7 +56,7 @@ public class SendPorukuX extends Activity {
 					@Override
 					public void run() {
 
-						String phoneNo = textPhoneNo.getText().toString();
+						String phoneNo = txtPhoneNumb.getText().toString();
 						String sms = textSMS.getText().toString();
 
 						try {
@@ -117,6 +118,18 @@ public class SendPorukuX extends Activity {
 				}, 260);
 			}
 		});
+		
+		txtPhoneNumb.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Toast t1 = Toast.makeText(getApplicationContext(),
+						"BROJ SE MENJA U PODEŠAVANJIMA", Toast.LENGTH_LONG);
+				t1.setDuration(2000);
+				t1.show();
+				
+			}
+		});
 	}
 
 	@Override
@@ -130,9 +143,12 @@ public class SendPorukuX extends Activity {
 		btnNazad = (Button) findViewById(R.id.btnBack);
 		btnSend = (Button) findViewById(R.id.btnPosalji);
 		btnSacuvaj = (Button) findViewById(R.id.btnSacuvajPoruku);
-		textPhoneNo = (EditText) findViewById(R.id.txtBrojTelefona);
+		txtPhoneNumb = (TextView) findViewById(R.id.txtBrojTelefona);
+		txtPhoneNumbV = (TextView) findViewById(R.id.textViewPhoneNo);
 		textSMS = (EditText) findViewById(R.id.txtSMSporukaX);
-		textPhoneNo.setText(vratiBroj());
+		txtSms = (TextView) findViewById(R.id.textViewSMS);
+		txtPhoneNumb.setText(vratiBroj());
+//		txtPhoneNumbV.setClickable(true);
 	}
 
 	// metoda iz podesavanjaAct

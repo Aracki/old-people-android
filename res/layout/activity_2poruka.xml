@@ -6,6 +6,7 @@
     android:background="@drawable/pozadina1"
     android:orientation="vertical"
     android:padding="15dp"
+    android:weightSum="8"
     tools:context="com.example.pomoc_starijima.Poruka.PorukaActivity"
     tools:ignore="HardcodedText" >
 
@@ -13,37 +14,24 @@
         android:id="@+id/listaPoruka"
         android:layout_width="match_parent"
         android:layout_height="0dip"
-        android:layout_weight="1" >
+        android:layout_weight="8"
+        >
     </ListView>
+    
 
-    <LinearLayout
-        android:layout_width="match_parent"
+
+          <Button
+        android:id="@+id/btnNazadPoruka"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal" >
+        android:layout_gravity="center"
+        android:layout_marginBottom="20sp"
+        android:layout_weight="1"
+        android:background="@drawable/rectangle"
+        android:text="NAZAD"
+        android:textColor="@color/White"
+        android:textSize="30sp"
+        android:textStyle="bold" />
 
-        <Button
-            android:id="@+id/btnBack"
-            android:layout_width="wrap_content"
-            android:layout_height="80dp"
-            android:layout_marginRight="4dp"
-            android:layout_weight="1"
-            android:background="@drawable/rectangle"
-            android:text="NAZAD"
-            android:textColor="@color/White"
-            android:textSize="23sp"
-            android:textStyle="bold" />
-
-        <Button
-            android:id="@+id/btnOk"
-            android:layout_width="wrap_content"
-            android:layout_height="80dp"
-            android:layout_marginLeft="4dp"
-            android:layout_weight="1"
-            android:background="@drawable/rectangle"
-            android:text="OK"
-            android:textColor="@color/White"
-            android:textSize="23sp"
-            android:textStyle="bold" />
-    </LinearLayout>
 
 </LinearLayout>

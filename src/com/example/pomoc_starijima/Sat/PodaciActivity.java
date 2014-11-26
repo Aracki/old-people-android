@@ -10,14 +10,15 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.app.Activity;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 
 public class PodaciActivity extends Activity {
 
-	Button btnPodaciRodj;
-	Button btnPodaciTV;
+	Button btnPodaciRodj, btnPodaciLekar, btnPodaciSlave, btnPodaciPomen, btnNazad;
+	
 	private Handler mHandler = new Handler();
 
 	@Override
@@ -45,7 +46,7 @@ public class PodaciActivity extends Activity {
 			}
 		});
 
-		btnPodaciTV.setOnClickListener(new View.OnClickListener() {
+		btnPodaciLekar.setOnClickListener(new View.OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
@@ -55,8 +56,24 @@ public class PodaciActivity extends Activity {
 
 					@Override
 					public void run() {
-						Intent i1 = new Intent("com.example.pomoc_starijima.podaciTV");
+						Intent i1 = new Intent("com.example.pomoc_starijima.podaciLekar");
 						startActivity(i1);
+					}
+				}, 260);
+			}
+		});
+		
+		btnNazad.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				v.startAnimation(animDugme);
+				mHandler.postDelayed(new Runnable() {
+
+					@Override
+					public void run() {
+						// TODO Auto-generated method stub
+						finish();
 					}
 				}, 260);
 			}
@@ -65,7 +82,11 @@ public class PodaciActivity extends Activity {
 
 	public void initialize() {
 		btnPodaciRodj = (Button) findViewById(R.id.btnPodaciRodjendani);
-		btnPodaciTV = (Button) findViewById(R.id.btnPodaciTVprogram);
+		btnPodaciLekar = (Button) findViewById(R.id.btnPodaciLekar);
+		btnPodaciSlave = (Button) findViewById(R.id.btnPodaciSlave);
+		btnPodaciPomen = (Button) findViewById(R.id.btnPodaciPomeni);	
+		btnNazad = (Button) findViewById(R.id.btnPodaciNazad);
+		
 	}
 
 }

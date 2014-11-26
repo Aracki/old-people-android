@@ -109,7 +109,7 @@ public class PodaciRodjendanActivity extends Activity {
 
 		} else {
 			CustomAdapter ca = new CustomAdapter(this, R.layout.list_item,
-					R.id.title, rodjendani);
+					R.id.title1, rodjendani);
 
 			// ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(this,
 			// R.layout.list_item, R.id.title, programi);
