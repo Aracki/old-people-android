@@ -73,5 +73,6 @@
     <string name="title_activity_pomeni">Pomeni</string>
     <string name="title_activity_my_alarm_service">Alarm1</string>
     <string name="title_activity_confirm_alarm_dialog">Alarm2</string>
+    <string name="title_activity_podaci_lekar">PodaciLekarActivity</string>
 
 </resources>
