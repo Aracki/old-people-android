@@ -7,15 +7,15 @@ public class _Slava {
 	private int id;
 	private int day;
 	private int month;
-	private int year;
+	
 	private String koSlavi;
 
-	public _Slava(int idR, String i, int d, int m, int year, String koSlavi) {
+	public _Slava(int idR, String i, int d, int m, String koSlavi) {
 		this.id = idR;
 		this.imeSlave = i;
 		this.day = d;
 		this.month = m;
-		this.year = year;
+		
 		this.koSlavi = koSlavi;
 		// TODO Auto-generated constructor stub
 	}
@@ -42,14 +42,6 @@ public class _Slava {
 
 	public void setMonth(int month) {
 		this.month = month;
-	}
-
-	public int getYear() {
-		return year;
-	}
-
-	public void setYear(int year) {
-		this.year = year;
 	}
 
 	public String getImeSlave() {

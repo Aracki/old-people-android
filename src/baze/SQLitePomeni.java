@@ -95,7 +95,7 @@ public class SQLitePomeni extends SQLiteOpenHelper {
 		String x = "";
 
 		if (y.moveToNext()) {
-			x = y.getString(1) + ":::" + y.getString(2) + ":::"
+			x = y.getString(0)+":::"+ y.getString(1) + ":::" + y.getString(2) + ":::"
 					+ y.getString(3);
 		}
 

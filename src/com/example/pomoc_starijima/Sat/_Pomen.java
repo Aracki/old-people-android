@@ -10,7 +10,7 @@ public class _Pomen {
 	private int year;
 	private String mesto;
 
-	public _Pomen(int idR, String i, int d, int m, int year, String mesto) {
+	public _Pomen(int idR, String i,String mesto, int d, int m, int year) {
 		this.id = idR;
 		this.ime = i;
 		this.day = d;

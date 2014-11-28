@@ -31,8 +31,7 @@ public class PodaciRodjendanActivity extends Activity {
 		db = new SQLiteRodjendani(this);
 		initialize();
 
-		listaRodjendana
-				.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+		listaRodjendana.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
 					@SuppressLint("NewApi")
 					@Override

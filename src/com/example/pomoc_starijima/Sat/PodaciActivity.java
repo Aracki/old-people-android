@@ -43,6 +43,23 @@ public class PodaciActivity extends Activity {
 				}, 260);
 			}
 		});
+		
+		btnPodaciPomen.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				v.startAnimation(animDugme);
+				mHandler.postDelayed(new Runnable() {
+
+					@Override
+					public void run() {
+						Intent i1 = new Intent(
+								"com.example.pomoc_starijima.podaciPomeni");
+						startActivity(i1);
+					}
+				}, 260);
+			}
+		});
 
 		btnPodaciLekar.setOnClickListener(new View.OnClickListener() {
 
@@ -77,6 +94,24 @@ public class PodaciActivity extends Activity {
 				}, 260);
 			}
 		});
+		
+		btnPodaciSlave.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				v.startAnimation(animDugme);
+				mHandler.postDelayed(new Runnable() {
+
+					@Override
+					public void run() {
+						Intent i1 = new Intent("com.example.pomoc_starijima.podaciSlave");
+						startActivity(i1);
+					}
+				}, 260);
+			}
+		});
+
 	}
 
 	public void initialize() {
