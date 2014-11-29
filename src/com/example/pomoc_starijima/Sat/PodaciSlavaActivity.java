@@ -62,11 +62,7 @@ public class PodaciSlavaActivity extends Activity {
 									public void onClick(DialogInterface dialog,
 											int id) {
 										int p1 = positionToRemove;
-										_Slava s = slave.get(p1);
-										Log.d("PozitionToRemove",
-												Integer.toString(p1));
-										Log.d("Ime", s.getImeSlave());
-//										Log.d("id", Integer.toString(r.getId()));
+										_Slava s = slave.get(p1);					
 										db.obrisiSlavu(s.getId());
 										napuniSlave();
 										finish();
@@ -130,33 +126,7 @@ public class PodaciSlavaActivity extends Activity {
 	}
 
 	private void napuniSlave() {
-		int size = db.vratiBrojSlava();
-
-		slave = new ArrayList<_Slava>();
-
-		for (int i = 0; i < size; i++) {
-			String x = db.vratiSlavu(i + 1);
-
-
-			// treba isEmpty popraviti!!!
-			if (!x.equals("")) {
-				String[] ID_II_DD_KK = x.split(":::");
-
-				String date = ID_II_DD_KK[2];
-			
-				String[] dateArray = date.split("/");
-
-				int dd = Integer.parseInt(dateArray[0]);
-				int mm = Integer.parseInt(dateArray[1]);
-				
-
-				_Slava s = new _Slava(Integer.parseInt(ID_II_DD_KK[0]),
-						ID_II_DD_KK[1], dd, mm, ID_II_DD_KK[3]);
-				;
-				slave.add(s);
-			}
-
-		}
+		slave = db.vratiSveSlave();
 
 	}
 

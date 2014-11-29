@@ -53,12 +53,12 @@ public class PodaciRodjendanActivity extends Activity {
 								new DialogInterface.OnClickListener() {
 									public void onClick(DialogInterface dialog,
 											int id) {
-										int p1 = positionToRemove;
-										_Rodjendan r = rodjendani.get(p1);
-										Log.d("PozitionToRemove",
-												Integer.toString(p1));
-										Log.d("Ime", r.getIme());
-										Log.d("id", Integer.toString(r.getId()));
+									//	int p1 = positionToRemove;
+										_Rodjendan r = rodjendani.get(positionToRemove);
+//										Log.d("PozitionToRemove",
+//												Integer.toString(p1));
+//										Log.d("Ime", r.getIme());
+//										Log.d("id", Integer.toString(r.getId()));
 										db.obrisiRodjendan(r.getId());
 										napuniRodjendane();
 										finish();
@@ -120,34 +120,7 @@ public class PodaciRodjendanActivity extends Activity {
 	}
 
 	private void napuniRodjendane() {
-		int size = db.vratiBrojRodjendana();
-
-		rodjendani = new ArrayList<_Rodjendan>();
-
-		for (int i = 0; i < size; i++) {
-			String x = db.vratiRodjendan(i + 1);
-
-			Log.d("Rodj: ", x);
-
-			// treba isEmpty popraviti!!!
-			if (!x.equals("")) {
-				String[] ID_II_PP_DD = x.split(":::");
-
-				String date = ID_II_PP_DD[3];
-				String[] dateArray = date.split("/");
-
-				int dd = Integer.parseInt(dateArray[0]);
-				int mm = Integer.parseInt(dateArray[1]);
-				int yy = Integer.parseInt(dateArray[2]);
-
-				_Rodjendan r = new _Rodjendan(Integer.parseInt(ID_II_PP_DD[0]),
-						ID_II_PP_DD[1], ID_II_PP_DD[2], dd, mm, yy);
-				;
-				rodjendani.add(r);
-			}
-
-		}
-
+		rodjendani = db.vratiSveRodjendane();
 	}
 
 	@Override

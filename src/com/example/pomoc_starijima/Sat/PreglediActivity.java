@@ -112,7 +112,9 @@ public class PreglediActivity extends Activity {
 									"Uspešno ste uneli pregled",
 									Toast.LENGTH_LONG);
 							t1.show();
+							
 						}
+						finish();
 
 					}
 				}, 260);

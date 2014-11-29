@@ -1,6 +1,12 @@
 package baze;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.example.pomoc_starijima.Sat._Pomen;
+import com.example.pomoc_starijima.Sat._Pregled;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -84,37 +90,62 @@ public class SQLitePomeni extends SQLiteOpenHelper {
 
 		db.close();
 	}
+	
+	public List<_Pomen> vratiSvePomene() {
 
-	public String vratiPomeni(int id) {
-
-		SQLiteDatabase db = this.getReadableDatabase();
-
-		Cursor y = db.query(TABLE_POMENI, COLUMNS, "id=?",
-				new String[] { String.valueOf(id) }, null, null, null, null);
-
-		String x = "";
-
-		if (y.moveToNext()) {
-			x = y.getString(0)+":::"+ y.getString(1) + ":::" + y.getString(2) + ":::"
-					+ y.getString(3);
-		}
-
-		return x;
-	}
-
-	public int vratiBrojRodjendana() {
-
+		List<_Pomen> pomeni;
+		pomeni = new ArrayList<_Pomen>();
 		String brojQuery = "SELECT * FROM " + TABLE_POMENI;
 
 		SQLiteDatabase db = this.getReadableDatabase();
-		Cursor cursor = db.rawQuery(brojQuery, null);
-
-		int broj = cursor.getCount();
-		cursor.close();
-		db.close();
-		return broj;
+		Cursor y = db.rawQuery(brojQuery, null);
+		
+		y.moveToFirst();
+		for(int i=0; i<y.getCount(); i++)
+		{
+			
+			String s = y.getString(3);
+			String[] datum = s.split("/");		
+			_Pomen pomen = new _Pomen(Integer.parseInt(y.getString(0)), y.getString(1), y.getString(2),Integer.parseInt(datum[0]),
+					Integer.parseInt(datum[1]), Integer.parseInt(datum[2]));
+			pomeni.add(pomen);
+			y.moveToNext();
+		}
+		
+		return pomeni;
 
 	}
+
+//	public String vratiPomeni(int id) {
+//
+//		SQLiteDatabase db = this.getReadableDatabase();
+//
+//		Cursor y = db.query(TABLE_POMENI, COLUMNS, "id=?",
+//				new String[] { String.valueOf(id) }, null, null, null, null);
+//
+//		String x = "";
+//
+//		if (y.moveToNext()) {
+//			x = y.getString(0)+":::"+ y.getString(1) + ":::" + y.getString(2) + ":::"
+//					+ y.getString(3);
+//		}
+//
+//		return x;
+//	}
+
+//	public int vratiBrojPomena() {
+//
+//		String brojQuery = "SELECT * FROM " + TABLE_POMENI;
+//
+//		SQLiteDatabase db = this.getReadableDatabase();
+//		Cursor cursor = db.rawQuery(brojQuery, null);
+//
+//		int broj = cursor.getCount();
+//		cursor.close();
+//		db.close();
+//		return broj;
+//
+//	}
 
 }
 

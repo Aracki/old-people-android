@@ -100,7 +100,7 @@ public class RodjendanActivity extends Activity {
 									Toast.LENGTH_LONG);
 							t1.show();
 						}
-
+						finish();
 					}
 				}, 260);
 			}

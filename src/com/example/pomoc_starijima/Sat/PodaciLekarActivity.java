@@ -55,9 +55,7 @@ public class PodaciLekarActivity extends Activity {
 											int id) {
 										int p1 = positionToRemove;
 										_Pregled p = pregledi.get(p1);
-										Log.d("PozitionToRemove",
-												Integer.toString(p1));
-										Log.d("Ime", p.getImeBolnice());
+										
 										// Log.d("id",
 										// Integer.toString(r.getId()));
 										db.obrisiPregled(p.getId());
@@ -121,38 +119,7 @@ public class PodaciLekarActivity extends Activity {
 	}
 
 	private void napuniPreglede() {
-		int size = db.vratiBrojPregleda();
-
-		pregledi = new ArrayList<_Pregled>();
-
-		for (int i = 0; i < size; i++) {
-			String x = db.vratiPregled(i + 1);
-
-			Log.d("Rodj: ", x);
-
-			// treba isEmpty popraviti!!!
-			if (!x.equals("")) {
-				String[] ID_II_DD_VV = x.split(":::");
-
-				String date = ID_II_DD_VV[2];
-				String time = ID_II_DD_VV[3];
-				String[] dateArray = date.split("/");
-				String[] timeArray = time.split(" : ");
-
-				int ss = Integer.parseInt(timeArray[0]);
-				int min = Integer.parseInt(timeArray[1]);
-
-				int dd = Integer.parseInt(dateArray[0]);
-				int mm = Integer.parseInt(dateArray[1]);
-				int yy = Integer.parseInt(dateArray[2]);
-
-				_Pregled p = new _Pregled(Integer.parseInt(ID_II_DD_VV[0]),
-						ID_II_DD_VV[1], dd, mm, yy, ss, min);
-				;
-				pregledi.add(p);
-			}
-
-		}
+		pregledi = db.vratiSvePreglede();
 
 	}
 

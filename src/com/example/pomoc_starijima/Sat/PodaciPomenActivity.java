@@ -125,35 +125,7 @@ public class PodaciPomenActivity extends Activity {
 	}
 
 	private void napuniPomene() {
-		int size = db.vratiBrojRodjendana();
-
-		pomeni = new ArrayList<_Pomen>();
-
-		for (int i = 0; i < size; i++) {
-			String x = db.vratiPomeni(i + 1);
-
-			Log.d("Rodj: ", x);
-
-			// treba isEmpty popraviti!!!
-			if (!x.equals("")) {
-				String[] ID_II_MM_DD = x.split(":::");
-				
-
-				String date = ID_II_MM_DD[3];
-				String[] dateArray = date.split("/");
-
-				int dd = Integer.parseInt(dateArray[0]);
-				int mm = Integer.parseInt(dateArray[1]);
-				int yy = Integer.parseInt(dateArray[2]);
-
-				_Pomen p = new _Pomen(Integer.parseInt(ID_II_MM_DD[0]),
-						ID_II_MM_DD[1], ID_II_MM_DD[2], dd, mm, yy);
-				;
-				pomeni.add(p);
-			}
-
-		}
-
+			pomeni = db.vratiSvePomene();
 	}
 
 	@Override

@@ -1,12 +1,19 @@
 package baze;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.example.pomoc_starijima.Sat._Rodjendan;
+import com.example.pomoc_starijima.Sat._Slava;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Environment;
+import android.util.Log;
 
 public class SQLiteSlave extends SQLiteOpenHelper {
 
@@ -83,34 +90,59 @@ public class SQLiteSlave extends SQLiteOpenHelper {
 		db.close();
 	}
 
-	public String vratiSlavu(int id) {
+//	public String vratiSlavu(int id) {
+//
+//		SQLiteDatabase db = this.getReadableDatabase();
+//
+//		Cursor y = db.query(TABLE_SLAVE, COLUMNS, "id=?",
+//				new String[] { String.valueOf(id) }, null, null, null, null);
+//
+//		String x = "";
+//
+//		if (y.moveToNext()) {
+//			x = y.getString(0)+":::" +y.getString(1) + ":::" + y.getString(2) + ":::"
+//					+ y.getString(3);
+//		}
+//
+//		return x;
+//	}
 
-		SQLiteDatabase db = this.getReadableDatabase();
+//	public int vratiBrojSlava() {
+//
+//		String brojQuery = "SELECT * FROM " + TABLE_SLAVE;
+//
+//		SQLiteDatabase db = this.getReadableDatabase();
+//		Cursor cursor = db.rawQuery(brojQuery, null);
+//
+//		int broj = cursor.getCount();
+//		cursor.close();
+//		db.close();
+//		return broj;
+//
+//	}
+	
+	public List<_Slava> vratiSveSlave() {
 
-		Cursor y = db.query(TABLE_SLAVE, COLUMNS, "id=?",
-				new String[] { String.valueOf(id) }, null, null, null, null);
-
-		String x = "";
-
-		if (y.moveToNext()) {
-			x = y.getString(0)+":::" +y.getString(1) + ":::" + y.getString(2) + ":::"
-					+ y.getString(3);
-		}
-
-		return x;
-	}
-
-	public int vratiBrojSlava() {
-
+		List<_Slava> slave;
+		slave = new ArrayList<_Slava>();
 		String brojQuery = "SELECT * FROM " + TABLE_SLAVE;
 
 		SQLiteDatabase db = this.getReadableDatabase();
-		Cursor cursor = db.rawQuery(brojQuery, null);
-
-		int broj = cursor.getCount();
-		cursor.close();
-		db.close();
-		return broj;
+		Cursor y = db.rawQuery(brojQuery, null);
+		
+		y.moveToFirst();
+		for(int i=0; i<y.getCount(); i++)
+		{
+			
+			String s = y.getString(2);
+			String[] datum = s.split("/");
+			_Slava slava = new _Slava(Integer.parseInt(y.getString(0)), y.getString(1), Integer.parseInt(datum[0]),
+					Integer.parseInt(datum[1]), y.getString(3));
+			slave.add(slava);
+			y.moveToNext();
+		}
+		
+		return slave;
 
 	}
 

@@ -84,6 +84,7 @@ public class SlavaActivity extends Activity {
 							"USPEŠNO STE SAČUVALI SLAVU", Toast.LENGTH_LONG);
 					t1.show();
 				}
+				finish();
 			}
 		});
 	}
