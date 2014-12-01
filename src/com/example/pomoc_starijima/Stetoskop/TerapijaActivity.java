@@ -12,7 +12,6 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Handler;
@@ -279,8 +278,11 @@ public class TerapijaActivity extends Activity {
 								alarmIntent.putExtra("Terapija", terapija);
 								alarmIntent.putExtra("ID", "3");
 								PendingIntent sender = PendingIntent
-										.getBroadcast(getBaseContext(), 3,
-												alarmIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+										.getBroadcast(
+												getBaseContext(),
+												3,
+												alarmIntent,
+												PendingIntent.FLAG_UPDATE_CURRENT);
 
 								if (aktivna_ck.isChecked()) {
 									pokreniAlarm(sender);
@@ -294,6 +296,7 @@ public class TerapijaActivity extends Activity {
 							t1.setDuration(5500);
 							t1.setGravity(Gravity.CENTER, 0, 0);
 							t1.show();
+							finish();
 
 							// if(aktivna_ck.isSelected())
 							// pokreniAlarm(unos.getText().toString());
@@ -368,7 +371,6 @@ public class TerapijaActivity extends Activity {
 					TerapijaActivity.this,
 					android.R.layout.simple_spinner_item, kadaUj);
 			kada.setAdapter(adapter);
-		
 
 		} else if (deoDana == 2) {
 
@@ -376,7 +378,6 @@ public class TerapijaActivity extends Activity {
 					TerapijaActivity.this,
 					android.R.layout.simple_spinner_item, kadaPo);
 			kada.setAdapter(adapter);
-	
 
 		} else if (deoDana == 3) {
 
@@ -385,12 +386,12 @@ public class TerapijaActivity extends Activity {
 					android.R.layout.simple_spinner_item, kadaUv);
 			kada.setAdapter(adapter);
 
-
 		}
 
 	}
-// Probati kako radi calendar.clear?????????????????????????????????
-	private void pokreniAlarm( PendingIntent pi) {
+
+	// Probati kako radi calendar.clear?????????????????????????????????
+	private void pokreniAlarm(PendingIntent pi) {
 		Calendar calNow = Calendar.getInstance();
 		Calendar calSet = (Calendar) calNow.clone();
 
