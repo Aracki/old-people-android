@@ -13,6 +13,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
         android:allowBackup="true"
@@ -133,11 +134,19 @@
         <receiver
             android:name=".Stetoskop.AlarmReceiverTerapija"
             android:screenOrientation="portrait" >
+                </receiver>
+                <receiver
+            android:name=".Sat.Receiver"
+            android:screenOrientation="portrait" >
+                </receiver>
+ 		<receiver
+            android:name=".Stetoskop.AutoStart"
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
-
+        
         <activity
             android:name=".Sat.SlavaActivity"
             android:label="@string/title_activity_slava"
