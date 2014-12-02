@@ -52,14 +52,23 @@ public class StetoskopActivity extends Activity {
 		});
 
 		ujutru.setOnClickListener(new View.OnClickListener() {
+
 			@Override
 			public void onClick(View v) {
-				Intent openTerapijaActivity = new Intent(
-						"com.example.pomoc_starijima.TERAPIJA1");
-				Bundle b1 = new Bundle();
-				b1.putInt("dan", 1);
-				openTerapijaActivity.putExtras(b1);
-				startActivity(openTerapijaActivity);
+				v.startAnimation(animDugme);
+				mHandler.postDelayed(new Runnable() {
+
+					@Override
+					public void run() {
+						// TODO Auto-generated method stub
+						Intent openTerapijaActivity = new Intent(
+								"com.example.pomoc_starijima.TERAPIJA1");
+						Bundle b1 = new Bundle();
+						b1.putInt("dan", 1);
+						openTerapijaActivity.putExtras(b1);
+						startActivity(openTerapijaActivity);
+					}
+				}, 260);
 			}
 		});
 
@@ -67,13 +76,19 @@ public class StetoskopActivity extends Activity {
 
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				Intent openTerapijaActivity = new Intent(
-						"com.example.pomoc_starijima.TERAPIJA1");
-				Bundle b1 = new Bundle();
-				b1.putInt("dan", 2);
-				openTerapijaActivity.putExtras(b1);
-				startActivity(openTerapijaActivity);
+				v.startAnimation(animDugme);
+				mHandler.postDelayed(new Runnable() {
+
+					@Override
+					public void run() {
+						Intent openTerapijaActivity = new Intent(
+								"com.example.pomoc_starijima.TERAPIJA1");
+						Bundle b1 = new Bundle();
+						b1.putInt("dan", 2);
+						openTerapijaActivity.putExtras(b1);
+						startActivity(openTerapijaActivity);
+					}
+				}, 260);
 			}
 		});
 
@@ -81,15 +96,22 @@ public class StetoskopActivity extends Activity {
 
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				Intent openTerapijaActivity = new Intent(
-						"com.example.pomoc_starijima.TERAPIJA1");
-				Bundle b1 = new Bundle();
-				b1.putInt("dan", 3);
-				openTerapijaActivity.putExtras(b1);
-				startActivity(openTerapijaActivity);
+				v.startAnimation(animDugme);
+				mHandler.postDelayed(new Runnable() {
+
+					@Override
+					public void run() {
+						Intent openTerapijaActivity = new Intent(
+								"com.example.pomoc_starijima.TERAPIJA1");
+						Bundle b1 = new Bundle();
+						b1.putInt("dan", 3);
+						openTerapijaActivity.putExtras(b1);
+						startActivity(openTerapijaActivity);
+					}
+				}, 260);
 			}
 		});
+
 	}
 
 }

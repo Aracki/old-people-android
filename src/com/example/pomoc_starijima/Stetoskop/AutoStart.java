@@ -44,7 +44,7 @@ public class AutoStart extends BroadcastReceiver {
 				continue;
 			}
 				String terapija = "LEKOVI: " +cursor.getString(1)+ "\n"
-						+"KOLICINA: "+ cursor.getString(3);
+						+"KOLICINA: "+ cursor.getString(4);
 			
 			Calendar calNow = Calendar.getInstance();
 			Calendar aCal = (Calendar) calNow.clone();
