@@ -3,15 +3,14 @@
 
     <string name="action_settings" translatable="false">Settings</string>
     <string name="appName">Pomoć starijima</string>
-    <string name="title_activity_sat">SatActivity</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="title_activity_poruka">PorukaActivity</string>
+    <string name="title_activity_sat">Podsetnik</string>
+    <string name="title_activity_poruka">Hitna poruka</string>
     <string name="title_activity_stetoskop">Izbor terapija</string>
-    <string name="title_activity_poziv">PozivActivity</string>
-    <string name="title_activity_podesavanja">PodesavanjaActivity</string>
+    <string name="title_activity_poziv">Poziv</string>
+    <string name="title_activity_podesavanja">Podešavanja</string>
     <string name="title_activity_lista">Svi podaci</string>
-    <string name="title_activity_listaR">Podaci o rodjendanima</string>
-    <string name="title_activity_listaTV">Podaci o TV programima</string>
+    <string name="title_activity_listaR">Rodjendani</string>
+    <string name="title_activity_listaTV">TV programi</string>
     <string name="podesavanja">Podešavanja</string>
     <string name="ujutru">UJUTRU</string>
     <string name="upodne">U PODNE</string>
@@ -65,7 +64,7 @@
     <color name="ivica">#EDD8A6</color>
     <color name="ivica2">#3B2414</color>
 
-    <string name="title_activity_terapija1">Terapija 1</string>
+    <string name="title_activity_terapija1">Terapija</string>
     <string name="title_activity_rodjendan">Rodjendan</string>
     <string name="title_activity_tv_program">TV Program</string>
     <string name="title_activity_pregledi">Pregledi</string>
@@ -73,8 +72,8 @@
     <string name="title_activity_pomeni">Pomeni</string>
     <string name="title_activity_my_alarm_service">Alarm1</string>
     <string name="title_activity_confirm_alarm_dialog">Alarm2</string>
-    <string name="title_activity_podaci_lekar">PodaciLekarActivity</string>
+    <string name="title_activity_podaci_lekar">Zakazani pregledi</string>
     <string name="title_activity_podaci_slava">Slave</string>
-    <string name="title_activity_podaci_pomen">Podaci Pomeni</string>
+    <string name="title_activity_podaci_pomen">Pomeni</string>
 
 </resources>
