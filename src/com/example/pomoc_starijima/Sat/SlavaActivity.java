@@ -33,7 +33,7 @@ public class SlavaActivity extends Activity {
 		getActionBar().setIcon(R.drawable.slika44);
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
 				WindowManager.LayoutParams.FLAG_FULLSCREEN);
-		setContentView(R.layout.activity_slava);
+		setContentView(R.layout.activity_1slava);
 		initialize();
 		db = new SQLiteSlave(this);
 
