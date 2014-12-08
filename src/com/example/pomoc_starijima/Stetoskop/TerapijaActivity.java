@@ -67,14 +67,12 @@ public class TerapijaActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
+		getActionBar().setIcon(R.drawable.slika33);
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
 				WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		setContentView(R.layout.activity_3terapija1);
 		db = new SQLiteTerapija(this);
 		initialize();
-		
-		
 
 		final Animation animDugme = AnimationUtils.loadAnimation(this,
 				R.anim.anim_alpha);
@@ -172,7 +170,7 @@ public class TerapijaActivity extends Activity {
 								Intent alarmIntent = new Intent(
 										getBaseContext(),
 										AlarmReceiverTerapija.class);
-								alarmIntent.putExtra("ID", "1");
+								alarmIntent.putExtra("ID", "2");
 								alarmIntent.putExtra("Terapija", terapija);
 								PendingIntent sender = PendingIntent
 										.getBroadcast(
@@ -373,7 +371,6 @@ public class TerapijaActivity extends Activity {
 					TerapijaActivity.this,
 					android.R.layout.simple_spinner_item, kadaUj);
 			kada.setAdapter(adapter);
-			
 
 		} else if (deoDana == 2) {
 
@@ -427,7 +424,6 @@ public class TerapijaActivity extends Activity {
 				String x = niz[5];
 				String y = niz[6];
 
-				
 				unos.setText(spisak);
 				kada.setSelection(Integer.parseInt(x));
 				koliko.setSelection(Integer.parseInt(y));
@@ -631,8 +627,8 @@ public class TerapijaActivity extends Activity {
 		// minut = 30;
 		// break;
 		case 12:
-			sat = 18;
-			minut = 56;
+			sat = 20;
+			minut = 49;
 			pozicijaVreme = 12;
 			break;
 
@@ -707,8 +703,8 @@ public class TerapijaActivity extends Activity {
 		// minut = 30;
 		// break;
 		case 12:
-			sat = 20;
-			minut = 19;
+			sat = 0;
+			minut = 5;
 			pozicijaVreme = 12;
 			break;
 

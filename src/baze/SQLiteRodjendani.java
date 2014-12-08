@@ -46,8 +46,6 @@ public class SQLiteRodjendani extends SQLiteOpenHelper {
 		db.execSQL("DROP TABLE IF EXISTS" + TABLE_RODJENDANI);
 		onCreate(db);
 	}
-	
-	
 
 	// public int updatePrimer(String primer, int id) {
 	//
@@ -91,61 +89,64 @@ public class SQLiteRodjendani extends SQLiteOpenHelper {
 		db.close();
 	}
 
-//	public String vratiRodjendan(int id) {
-//
-//		SQLiteDatabase db = this.getReadableDatabase();
-//
-//		Cursor y = db.query(TABLE_RODJENDANI, COLUMNS, "id=?",
-//				new String[] { String.valueOf(id) }, null, null, null, null);
-//
-//		String x = "";
-//
-//		if (y.moveToNext()) {
-//			x =y.getString(0)+":::"+ y.getString(1) + ":::" + y.getString(2) + ":::"
-//					+ y.getString(3);
-//		}
-//
-//		return x;
-//	}
+	// public String vratiRodjendan(int id) {
+	//
+	// SQLiteDatabase db = this.getReadableDatabase();
+	//
+	// Cursor y = db.query(TABLE_RODJENDANI, COLUMNS, "id=?",
+	// new String[] { String.valueOf(id) }, null, null, null, null);
+	//
+	// String x = "";
+	//
+	// if (y.moveToNext()) {
+	// x =y.getString(0)+":::"+ y.getString(1) + ":::" + y.getString(2) + ":::"
+	// + y.getString(3);
+	// }
+	//
+	// return x;
+	// }
 
-//	public int vratiBrojRodjendana() {
-//
-//		String brojQuery = "SELECT * FROM " + TABLE_RODJENDANI;
-//
-//		SQLiteDatabase db = this.getReadableDatabase();
-//		Cursor cursor = db.rawQuery(brojQuery, null);
-//
-//		int broj = cursor.getCount();
-//		cursor.close();
-//		db.close();
-//		return broj;
-//
-//	}
-	
+	// public int vratiBrojRodjendana() {
+	//
+	// String brojQuery = "SELECT * FROM " + TABLE_RODJENDANI;
+	//
+	// SQLiteDatabase db = this.getReadableDatabase();
+	// Cursor cursor = db.rawQuery(brojQuery, null);
+	//
+	// int broj = cursor.getCount();
+	// cursor.close();
+	// db.close();
+	// return broj;
+	//
+	// }
+
 	public List<_Rodjendan> vratiSveRodjendane() {
-		
+
 		List<_Rodjendan> rodjendani;
 		rodjendani = new ArrayList<_Rodjendan>();
 		String brojQuery = "SELECT * FROM " + TABLE_RODJENDANI;
 
 		SQLiteDatabase db = this.getReadableDatabase();
 		Cursor y = db.rawQuery(brojQuery, null);
-		Log.d("Broj",Integer.toString(y.getCount()));
+		Log.d("Broj", Integer.toString(y.getCount()));
 		y.moveToFirst();
-		for(int i=0; i<y.getCount(); i++)
-		{
-			
+		for (int i = 0; i < y.getCount(); i++) {
+			// uzimanje datuma
 			String s = y.getString(3);
 			String[] datum = s.split("/");
-			_Rodjendan r = new _Rodjendan(Integer.parseInt(y.getString(0)), y.getString(1),y.getString(2)
-						,Integer.parseInt(datum[0]),Integer.parseInt(datum[1]),Integer.parseInt(datum[2]));
+
+			// pravimo rodj
+			_Rodjendan r = new _Rodjendan(Integer.parseInt(y.getString(0)),
+					y.getString(1), y.getString(2), Integer.parseInt(datum[0]),
+					Integer.parseInt(datum[1]), Integer.parseInt(datum[2]));
 			rodjendani.add(r);
-			Log.d("IME:",r.getIme());
+
+			Log.d("IME:", r.getIme());
 			Log.d("i", Integer.toString(i));
+			Log.d("datum-dan", Integer.toString(r.getDay()));
 			y.moveToNext();
-			
+
 		}
 		return rodjendani;
 	}
-
 }

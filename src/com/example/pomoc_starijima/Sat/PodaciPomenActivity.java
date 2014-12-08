@@ -1,16 +1,10 @@
 package com.example.pomoc_starijima.Sat;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import com.example.pomoc_starijima.CustomAdapter;
 import com.example.pomoc_starijima.CustomAdapterPomeni;
 import com.example.pomoc_starijima.R;
-import com.example.pomoc_starijima.R.id;
-import com.example.pomoc_starijima.R.layout;
-
 import baze.SQLitePomeni;
-import baze.SQLiteRodjendani;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -20,6 +14,7 @@ import android.os.Bundle;
 
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
@@ -32,6 +27,9 @@ public class PodaciPomenActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		getActionBar().setIcon(R.drawable.slika44);
+		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+				WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		setContentView(R.layout.activity_podaci_pomen);
 		db = new SQLitePomeni(this);
 		initialize();

@@ -1,29 +1,20 @@
 package com.example.pomoc_starijima.Sat;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import baze.SQLitePregledi;
 import baze.SQLiteSlave;
 
 
-import com.example.pomoc_starijima.CustomAdapter;
-import com.example.pomoc_starijima.CustomAdapterLekar;
 import com.example.pomoc_starijima.CustomAdapterSlave;
 import com.example.pomoc_starijima.R;
-import com.example.pomoc_starijima.R.id;
-import com.example.pomoc_starijima.R.layout;
-import com.example.pomoc_starijima.R.menu;
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
@@ -37,6 +28,9 @@ public class PodaciSlavaActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		getActionBar().setIcon(R.drawable.slika44);
+		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+				WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		setContentView(R.layout.activity_podaci_slava);
 		db = new SQLiteSlave(this);
 		initialize();
@@ -48,7 +42,7 @@ public class PodaciSlavaActivity extends Activity {
 					public void onItemClick(AdapterView<?> parent, View view,
 							int position, long id) {
 						final int positionToRemove = position;
-						View viewToRemove = view;
+//						View viewToRemove = view;
 						// Intent i1 = new
 						// Intent("com.example.pomoc_starijima.RODJENDAN");
 						// startActivity(i1);

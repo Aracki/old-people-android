@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
+import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
@@ -44,6 +45,8 @@ public class PorukaActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setTitle("Slanje hitnih poruka");
 		getActionBar().setIcon(R.drawable.slika11);
+		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+				WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		napuniListuIntentova();
 		setContentView(R.layout.activity_2poruka);
 		db = new SQLitePrimeriPoruka(this);

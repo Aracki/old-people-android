@@ -1,6 +1,5 @@
 package com.example.pomoc_starijima.Sat;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.example.pomoc_starijima.CustomAdapter;
@@ -13,8 +12,8 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 //import android.support.v7.app.ActionBarActivity;
 
-import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
@@ -27,6 +26,9 @@ public class PodaciRodjendanActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		getActionBar().setIcon(R.drawable.slika44);
+		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+				WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		setContentView(R.layout.activity_1podaci_rodjendan);
 		db = new SQLiteRodjendani(this);
 		initialize();

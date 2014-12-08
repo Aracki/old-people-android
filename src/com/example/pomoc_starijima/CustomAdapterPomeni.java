@@ -4,7 +4,6 @@ package com.example.pomoc_starijima;
 import java.util.List;
 
 import com.example.pomoc_starijima.Sat._Pomen;
-import com.example.pomoc_starijima.Sat._Pregled;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;

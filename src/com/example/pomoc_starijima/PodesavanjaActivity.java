@@ -15,6 +15,7 @@ import android.os.Handler;
 import android.app.Activity;
 import android.view.Gravity;
 import android.view.View;
+import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
@@ -36,6 +37,8 @@ public class PodesavanjaActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setTitle("Podesavanja broja");
 		getActionBar().setIcon(R.drawable.slika22);
+		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+				WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		setContentView(R.layout.activity_podesavanja_poziva);
 		initialize();
 		final Animation animDugme = AnimationUtils.loadAnimation(this,
