@@ -13,4 +13,28 @@
         android:dividerHeight="4dp" >
     </ListView>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <Button
+            android:id="@+id/btnBack"
+            android:layout_width="150dp"
+            android:layout_height="fill_parent"
+            android:layout_gravity="right"
+            android:layout_marginBottom="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="5dp"
+            android:alpha="0.6"
+            android:background="@drawable/rectangle"
+            android:text="@string/nazad"
+            android:textColor="@color/White"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
 </RelativeLayout>

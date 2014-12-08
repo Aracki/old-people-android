@@ -15,10 +15,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 
 public class PodaciRodjendanActivity extends Activity {
 
+	Button btnBack;
 	ListView listaRodjendana;
 	SQLiteRodjendani db;
 	List<_Rodjendan> rodjendani;
@@ -80,6 +82,15 @@ public class PodaciRodjendanActivity extends Activity {
 
 					}
 				});
+		
+		btnBack.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				finish();
+			}
+		});
 	}
 
 	// private void inicijalizuj() {
@@ -106,6 +117,7 @@ public class PodaciRodjendanActivity extends Activity {
 
 	private void initialize() {
 		listaRodjendana = (ListView) findViewById(R.id.listaRodjendana);
+		btnBack = (Button) findViewById(R.id.btnBack);
 		napuniRodjendane();
 
 		if (rodjendani.isEmpty()) {
@@ -124,12 +136,4 @@ public class PodaciRodjendanActivity extends Activity {
 	private void napuniRodjendane() {
 		rodjendani = db.vratiSveRodjendane();
 	}
-
-	@Override
-	protected void onResume() {
-		// TODO Auto-generated method stub
-		super.onResume();
-
-	}
-
 }

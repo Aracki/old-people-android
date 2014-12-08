@@ -4,7 +4,6 @@ import java.util.List;
 
 import baze.SQLiteSlave;
 
-
 import com.example.pomoc_starijima.CustomAdapterSlave;
 import com.example.pomoc_starijima.R;
 import android.annotation.SuppressLint;
@@ -16,11 +15,12 @@ import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 
 public class PodaciSlavaActivity extends Activity {
 
-
+	Button btnBack;
 	ListView listaSlava;
 	SQLiteSlave db;
 	List<_Slava> slave;
@@ -31,18 +31,19 @@ public class PodaciSlavaActivity extends Activity {
 		getActionBar().setIcon(R.drawable.slika44);
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
 				WindowManager.LayoutParams.FLAG_FULLSCREEN);
-		setContentView(R.layout.activity_podaci_slava);
+		setContentView(R.layout.activity_1podaci_slava);
 		db = new SQLiteSlave(this);
 		initialize();
 
-		listaSlava.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+		listaSlava
+				.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
 					@SuppressLint("NewApi")
 					@Override
 					public void onItemClick(AdapterView<?> parent, View view,
 							int position, long id) {
 						final int positionToRemove = position;
-//						View viewToRemove = view;
+						// View viewToRemove = view;
 						// Intent i1 = new
 						// Intent("com.example.pomoc_starijima.RODJENDAN");
 						// startActivity(i1);
@@ -56,7 +57,7 @@ public class PodaciSlavaActivity extends Activity {
 									public void onClick(DialogInterface dialog,
 											int id) {
 										int p1 = positionToRemove;
-										_Slava s = slave.get(p1);					
+										_Slava s = slave.get(p1);
 										db.obrisiSlavu(s.getId());
 										napuniSlave();
 										finish();
@@ -76,6 +77,16 @@ public class PodaciSlavaActivity extends Activity {
 
 					}
 				});
+
+		btnBack.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				finish();
+			}
+		});
+
 	}
 
 	// private void inicijalizuj() {
@@ -102,6 +113,7 @@ public class PodaciSlavaActivity extends Activity {
 
 	private void initialize() {
 		listaSlava = (ListView) findViewById(R.id.listaSlava);
+		btnBack = (Button) findViewById(R.id.btnBack);
 		Log.d("Usao u napuniSlave", "");
 		napuniSlave();
 		Log.d("Izasao", "");
@@ -109,8 +121,8 @@ public class PodaciSlavaActivity extends Activity {
 		if (slave.isEmpty()) {
 
 		} else {
-			CustomAdapterSlave ca = new CustomAdapterSlave(this, R.layout.list_item,
-					R.id.title1, slave);
+			CustomAdapterSlave ca = new CustomAdapterSlave(this,
+					R.layout.list_item, R.id.title1, slave);
 
 			// ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(this,
 			// R.layout.list_item, R.id.title, programi);
@@ -121,13 +133,6 @@ public class PodaciSlavaActivity extends Activity {
 
 	private void napuniSlave() {
 		slave = db.vratiSveSlave();
-
-	}
-
-	@Override
-	protected void onResume() {
-		// TODO Auto-generated method stub
-		super.onResume();
 
 	}
 

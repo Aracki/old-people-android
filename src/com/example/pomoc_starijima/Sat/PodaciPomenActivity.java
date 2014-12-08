@@ -16,10 +16,12 @@ import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 
 public class PodaciPomenActivity extends Activity {
 
+	Button btnBack;
 	ListView listaPomena;
 	SQLitePomeni db;
 	List<_Pomen> pomeni;
@@ -30,7 +32,7 @@ public class PodaciPomenActivity extends Activity {
 		getActionBar().setIcon(R.drawable.slika44);
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
 				WindowManager.LayoutParams.FLAG_FULLSCREEN);
-		setContentView(R.layout.activity_podaci_pomen);
+		setContentView(R.layout.activity_1podaci_pomen);
 		db = new SQLitePomeni(this);
 		initialize();
 
@@ -81,6 +83,15 @@ public class PodaciPomenActivity extends Activity {
 
 					}
 				});
+		
+		btnBack.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				finish();
+			}
+		});
 	}
 
 	// private void inicijalizuj() {
@@ -107,6 +118,7 @@ public class PodaciPomenActivity extends Activity {
 
 	private void initialize() {
 		listaPomena = (ListView) findViewById(R.id.listaPomena);
+		btnBack = (Button) findViewById(R.id.btnBack);
 		napuniPomene();
 
 		if (pomeni.isEmpty()) {
@@ -125,12 +137,4 @@ public class PodaciPomenActivity extends Activity {
 	private void napuniPomene() {
 			pomeni = db.vratiSvePomene();
 	}
-
-	@Override
-	protected void onResume() {
-		// TODO Auto-generated method stub
-		super.onResume();
-
-	}
-
 }

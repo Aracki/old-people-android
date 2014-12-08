@@ -33,7 +33,7 @@ public class PomeniActivity extends Activity {
 		getActionBar().setIcon(R.drawable.slika44);
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
 				WindowManager.LayoutParams.FLAG_FULLSCREEN);
-		setContentView(R.layout.activity_pomeni);
+		setContentView(R.layout.activity_1pomeni);
 
 		naslov = (TextView) findViewById(R.id.txtPomeniNaslov);
 		ime = (TextView) findViewById(R.id.txtImePomen);
