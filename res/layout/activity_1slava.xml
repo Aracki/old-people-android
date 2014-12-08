@@ -1,6 +1,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-   android:id="@+id/container"
+    android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/pozadina1"
@@ -8,7 +8,7 @@
     android:weightSum="11"
     tools:context="com.example.pomoc_starijima.Sat.SlavaActivity" >
 
-     <TextView
+    <TextView
         android:id="@+id/txtSlaveTitle"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -18,7 +18,7 @@
         android:textColor="@color/white"
         android:textSize="35sp"
         android:textStyle="bold" />
-     
+
     <TextView
         android:id="@+id/txtImeSlave"
         android:layout_width="fill_parent"
@@ -30,30 +30,31 @@
         android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="bold" />
-    
+
     <EditText
         android:id="@+id/editUnosSlave"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:background="@color/white"
         android:ems="20"
-        android:inputType="textPersonName" >
+        android:inputType="textPersonName"
+        android:textColor="@color/black" >
     </EditText>
-    
-      <Button
+
+    <Button
         android:id="@+id/izaberiDane"
         android:layout_width="170dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
-        android:layout_weight="1"
         android:layout_marginTop="10dp"
-        android:text="IZABERI DATUM"
+        android:layout_weight="1"
         android:background="@drawable/rectangle"
+        android:text="IZABERI DATUM"
         android:textColor="@color/White"
         android:textStyle="bold" />
-      
-      
-      <TextView
+
+    <TextView
         android:id="@+id/txtIspisDatum"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -61,8 +62,7 @@
         android:textColor="@color/White"
         android:textSize="20sp"
         android:textStyle="bold" />
-      
-    
+
     <TextView
         android:id="@+id/txtKoSlavi"
         android:layout_width="fill_parent"
@@ -80,12 +80,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:background="@color/white"
         android:ems="10"
-        android:inputType="textPersonName" >
-
+        android:inputType="textPersonName"
+        android:textColor="@color/black" >
     </EditText>
-    
-        <Button
+
+    <Button
         android:id="@+id/btnSacuvajBroj"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -113,6 +114,5 @@
         android:textColor="@color/White"
         android:textSize="30sp"
         android:textStyle="bold" />
-    
 
 </LinearLayout>

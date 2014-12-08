@@ -36,7 +36,9 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:ems="30" />
+        android:background="@color/white"
+        android:ems="30"
+        android:textColor="@color/black" />
 
     <Button
         android:id="@+id/izaberiDane"

@@ -43,10 +43,12 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_weight="1"
+        android:background="@color/white"
         android:freezesText="true"
         android:gravity="top"
         android:inputType="none"
-        android:lines="3" />
+        android:lines="3"
+        android:textColor="@color/black" />
 
     <Button
         android:id="@+id/btnSacuvajPoruku"

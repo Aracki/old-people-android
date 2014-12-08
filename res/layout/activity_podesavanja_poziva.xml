@@ -31,7 +31,10 @@
         android:minEms="9"
         android:textColorHint="@color/FloralWhite"
         android:textSize="40sp"
-        android:textStyle="italic" >
+        android:textStyle="italic"
+        android:background="@color/white"
+        android:textColor="@color/black"
+         >
     </EditText>
 
     <TextView
