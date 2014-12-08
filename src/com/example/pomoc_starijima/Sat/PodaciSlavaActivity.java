@@ -50,7 +50,7 @@ public class PodaciSlavaActivity extends Activity {
 						// TODO Auto-generated method stub
 						AlertDialog.Builder builder1 = new AlertDialog.Builder(
 								PodaciSlavaActivity.this);
-						builder1.setMessage("DA LI STE SIGURNI DA ŽELITE DA OBRIŠETE PREGLED ?");
+						builder1.setMessage("DA LI STE SIGURNI DA ŽELITE DA OBRIŠETE SLAVU ?");
 						builder1.setCancelable(true);
 						builder1.setPositiveButton("DA",
 								new DialogInterface.OnClickListener() {
