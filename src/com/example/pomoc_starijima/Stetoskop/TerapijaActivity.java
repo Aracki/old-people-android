@@ -70,9 +70,10 @@ public class TerapijaActivity extends Activity {
 		getActionBar().setIcon(R.drawable.slika33);
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
 				WindowManager.LayoutParams.FLAG_FULLSCREEN);
-		setContentView(R.layout.activity_3terapija1);
-		db = new SQLiteTerapija(this);
+		setContentView(R.layout.activity_3terapija1);		db = new SQLiteTerapija(this);
 		initialize();
+		
+		
 
 		final Animation animDugme = AnimationUtils.loadAnimation(this,
 				R.anim.anim_alpha);
@@ -170,7 +171,7 @@ public class TerapijaActivity extends Activity {
 								Intent alarmIntent = new Intent(
 										getBaseContext(),
 										AlarmReceiverTerapija.class);
-								alarmIntent.putExtra("ID", "2");
+								alarmIntent.putExtra("ID", "1");
 								alarmIntent.putExtra("Terapija", terapija);
 								PendingIntent sender = PendingIntent
 										.getBroadcast(
@@ -371,6 +372,7 @@ public class TerapijaActivity extends Activity {
 					TerapijaActivity.this,
 					android.R.layout.simple_spinner_item, kadaUj);
 			kada.setAdapter(adapter);
+			
 
 		} else if (deoDana == 2) {
 
@@ -394,6 +396,7 @@ public class TerapijaActivity extends Activity {
 	private void pokreniAlarm(PendingIntent pi) {
 		Calendar calNow = Calendar.getInstance();
 		Calendar calSet = (Calendar) calNow.clone();
+		
 
 		calSet.set(Calendar.HOUR_OF_DAY, sat);
 		calSet.set(Calendar.MINUTE, minut);
@@ -402,8 +405,16 @@ public class TerapijaActivity extends Activity {
 
 		// alarm.setRepeating(AlarmManager.RTC_WAKEUP, calSet.getTimeInMillis(),
 		// AlarmManager.INTERVAL_DAY, pi);
+		if (calSet.before(calNow)){
+			calSet.add(Calendar.DATE, 1);
+			alarm.setRepeating(AlarmManager.RTC_WAKEUP, calSet.getTimeInMillis(),
+					AlarmManager.INTERVAL_FIFTEEN_MINUTES, pi);	
+					Log.d("If", "u petlji");
+		}		
 		alarm.setRepeating(AlarmManager.RTC_WAKEUP, calSet.getTimeInMillis(),
 				AlarmManager.INTERVAL_FIFTEEN_MINUTES, pi);
+		
+		
 
 	}
 
@@ -424,6 +435,7 @@ public class TerapijaActivity extends Activity {
 				String x = niz[5];
 				String y = niz[6];
 
+				
 				unos.setText(spisak);
 				kada.setSelection(Integer.parseInt(x));
 				koliko.setSelection(Integer.parseInt(y));
@@ -627,8 +639,8 @@ public class TerapijaActivity extends Activity {
 		// minut = 30;
 		// break;
 		case 12:
-			sat = 20;
-			minut = 49;
+			sat = 17;
+			minut = 30;
 			pozicijaVreme = 12;
 			break;
 
@@ -703,8 +715,8 @@ public class TerapijaActivity extends Activity {
 		// minut = 30;
 		// break;
 		case 12:
-			sat = 0;
-			minut = 5;
+			sat = 23;
+			minut = 30;
 			pozicijaVreme = 12;
 			break;
 

@@ -118,8 +118,6 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-       
-       
         <activity
             android:name=".Sat.PreglediActivity"
             android:label="@string/title_activity_pregledi"
@@ -134,19 +132,19 @@
         <receiver
             android:name=".Stetoskop.AlarmReceiverTerapija"
             android:screenOrientation="portrait" >
-                </receiver>
-                <receiver
+        </receiver>
+        <receiver
             android:name=".Sat.Receiver"
             android:screenOrientation="portrait" >
-                </receiver>
- 		<receiver
+        </receiver>
+        <receiver
             android:name=".Stetoskop.AutoStart"
             android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
-        
+
         <activity
             android:name=".Sat.SlavaActivity"
             android:label="@string/title_activity_slava"
@@ -167,33 +165,42 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        
         <activity
-            android:name="com.example.pomoc_starijima.Sat.PodaciLekarActivity"
+            android:name=".Sat.PodaciLekarActivity"
             android:label="@string/title_activity_podaci_lekar"
-            android:screenOrientation="portrait"  >
-             <intent-filter>
+            android:screenOrientation="portrait" >
+            <intent-filter>
                 <action android:name="com.example.pomoc_starijima.podaciLekar" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.pomoc_starijima.Sat.PodaciSlavaActivity"
+            android:name=".Sat.PodaciSlavaActivity"
             android:label="@string/title_activity_podaci_slava"
-            android:screenOrientation="portrait"  >
-             <intent-filter>
+            android:screenOrientation="portrait" >
+            <intent-filter>
                 <action android:name="com.example.pomoc_starijima.podaciSlave" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.pomoc_starijima.Sat.PodaciPomenActivity"
+            android:name=".Sat.PodaciPomenActivity"
             android:label="@string/title_activity_podaci_pomen"
-            android:screenOrientation="portrait"  >
-             <intent-filter>
+            android:screenOrientation="portrait" >
+            <intent-filter>
                 <action android:name="com.example.pomoc_starijima.podaciPomeni" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".NotificationActivity"
+            android:label="@string/title_activity_notification"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="com.example.pomoc_starijima.NOTIFICATION" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>

@@ -59,6 +59,9 @@ public class PodaciSlavaActivity extends Activity {
 										int p1 = positionToRemove;
 										_Slava s = slave.get(p1);
 										db.obrisiSlavu(s.getId());
+										int rqs = 20000+s.getId();
+										SlavaActivity.cancelAlarm(rqs, getBaseContext());
+
 										napuniSlave();
 										finish();
 
@@ -89,27 +92,6 @@ public class PodaciSlavaActivity extends Activity {
 
 	}
 
-	// private void inicijalizuj() {
-	// listaRodjendana = (ListView) findViewById(R.id.listaRodjendana);
-	//
-	// int ukupanBroj = db.vratiBrojRodjendana();
-	//
-	// String[] poruke = new String[ukupanBroj];
-	// if (ukupanBroj > 0) {
-	//
-	// for (int i = 0; i < ukupanBroj; i++) {
-	// poruke[i] = db.vratiRodjendan(i + 1);
-	// }
-	//
-	// ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(this,
-	// R.layout.list_row, R.id.title, poruke);
-	//
-	// listaRodjendana.setAdapter(adapter1);
-	// } else {
-	//
-	// }
-	//
-	// }
 
 	private void initialize() {
 		listaSlava = (ListView) findViewById(R.id.listaSlava);
@@ -135,5 +117,13 @@ public class PodaciSlavaActivity extends Activity {
 		slave = db.vratiSveSlave();
 
 	}
+	
+//	@Override
+//	protected void onResume() {
+//		// TODO Auto-generated method stub
+//		super.onResume();
+//
+//	}
+
 
 }

@@ -64,6 +64,9 @@ public class PodaciRodjendanActivity extends Activity {
 //										Log.d("Ime", r.getIme());
 //										Log.d("id", Integer.toString(r.getId()));
 										db.obrisiRodjendan(r.getId());
+										int rqs = 10000+r.getId();
+										RodjendanActivity.cancelAlarm(rqs, getBaseContext());
+
 										napuniRodjendane();
 										finish();
 
@@ -93,27 +96,6 @@ public class PodaciRodjendanActivity extends Activity {
 		});
 	}
 
-	// private void inicijalizuj() {
-	// listaRodjendana = (ListView) findViewById(R.id.listaRodjendana);
-	//
-	// int ukupanBroj = db.vratiBrojRodjendana();
-	//
-	// String[] poruke = new String[ukupanBroj];
-	// if (ukupanBroj > 0) {
-	//
-	// for (int i = 0; i < ukupanBroj; i++) {
-	// poruke[i] = db.vratiRodjendan(i + 1);
-	// }
-	//
-	// ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(this,
-	// R.layout.list_row, R.id.title, poruke);
-	//
-	// listaRodjendana.setAdapter(adapter1);
-	// } else {
-	//
-	// }
-	//
-	// }
 
 	private void initialize() {
 		listaRodjendana = (ListView) findViewById(R.id.listaRodjendana);

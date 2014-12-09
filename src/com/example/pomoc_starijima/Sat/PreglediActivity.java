@@ -1,11 +1,18 @@
 package com.example.pomoc_starijima.Sat;
 
+import java.util.GregorianCalendar;
+
 import baze.SQLitePregledi;
 import com.example.pomoc_starijima.R;
 import android.app.Activity;
+import android.app.AlarmManager;
 import android.app.DialogFragment;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.Animation;
@@ -26,6 +33,9 @@ public class PreglediActivity extends Activity {
 	DatePicker datumP;
 	Button sacuvaj, nazad, dajDatum, dajVreme;
 	private Handler mHandler = new Handler();
+	static AlarmManager alarmLekar;
+	int brojac = 30000;
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -38,10 +48,6 @@ public class PreglediActivity extends Activity {
 		naslov = (TextView) findViewById(R.id.txtPregledNaslov);
 		ime = (TextView) findViewById(R.id.txtPregledIme);
 		unos = (EditText) findViewById(R.id.edtPregledUnos);
-		// datum = (TextView) findViewById(R.id.txtDatum);
-		// datumP = (DatePicker) findViewById(R.id.dpDatumPr);
-		// vreme = (TextView) findViewById(R.id.txtVreme);
-		// vremeP = (TimePicker) findViewById(R.id.tpVremePr);
 		sacuvaj = (Button) findViewById(R.id.btnSacuvajBroj);
 		nazad = (Button) findViewById(R.id.btnNazadRodjendan);
 		dajDatum = (Button) findViewById(R.id.izaberiDane);
@@ -50,6 +56,7 @@ public class PreglediActivity extends Activity {
 		staviVreme = (TextView) findViewById(R.id.txtVremeP);
 		final Animation animDugme = AnimationUtils.loadAnimation(this,
 				R.anim.anim_alpha);
+		alarmLekar = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
 
 		dajVreme.setOnClickListener(new View.OnClickListener() {
 
@@ -115,9 +122,21 @@ public class PreglediActivity extends Activity {
 							Toast t1 = Toast.makeText(getApplicationContext(),
 									"Uspešno ste uneli pregled",
 									Toast.LENGTH_LONG);
-							t1.show();
-							
+							t1.show();							
 						}
+						String poruka = imeBolnice;
+						Intent alarmIntent = new Intent(getBaseContext(),Receiver.class);
+						int rqs = brojac + Integer.parseInt(bazaPregledi.vratiPregled());
+						alarmIntent.putExtra("Poruka", poruka);
+						alarmIntent.putExtra("ID", Integer.toString(rqs));
+						alarmIntent.putExtra("Datum", datum);
+						alarmIntent.putExtra("Vreme", vreme);
+						alarmIntent.putExtra("TipReceiver", "ReceiverL");
+						PendingIntent sender = PendingIntent
+								.getBroadcast(getBaseContext(), rqs,
+										alarmIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+						pokreniAlarm(sender, datum);
+
 						finish();
 
 					}
@@ -125,6 +144,46 @@ public class PreglediActivity extends Activity {
 			}
 		});
 	}
+	private void pokreniAlarm(PendingIntent pi, String datum) {
+		GregorianCalendar calNow = (GregorianCalendar) GregorianCalendar.getInstance();
+		GregorianCalendar calSet = (GregorianCalendar) GregorianCalendar.getInstance();
+		
+		String[] datumNiz = datum.split("/");
+		
+			
+		int godina = Integer.parseInt(datumNiz[2]);
+		int dan = Integer.parseInt(datumNiz[0]);
+		int mesec = Integer.parseInt(datumNiz[1]) -1;
+//		int sat = 14;
+//		int minut = 00;
+		int sat = 10;
+		int minut = 0;
+	
+		calSet.set(godina, mesec, dan, sat, minut);
+		
+		if (calSet.before(calNow)){
+			calSet.set(godina +1 , mesec, dan, sat, minut);
+			Log.d("if:", "Usao u if");
+			
+		}
+
+		alarmLekar.set(AlarmManager.RTC_WAKEUP,calSet.getTimeInMillis()- AlarmManager.INTERVAL_DAY,pi);
+		Log.d("Datum:", calSet.getTime().toString());
+
+	}
+//	
+	public static void cancelAlarm(int rqs, Context ctx)
+	{
+		Intent alarmIntent = new Intent(
+				ctx,
+				Receiver.class);
+		PendingIntent sender = PendingIntent
+				.getBroadcast(ctx, rqs,
+						alarmIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+		alarmLekar.cancel(sender);
+		
+	}
+
 
 	// protected void onPause() {
 	// // TODO Auto-generated method stub

@@ -2,7 +2,7 @@
 <resources>
 
     <string name="action_settings" translatable="false">Settings</string>
-    <string name="appName">Pomoć starijima</string>
+    <string name="appName">Pomoc starijima</string>
     <string name="title_activity_sat">Podsetnik</string>
     <string name="title_activity_poruka">Hitna poruka</string>
     <string name="title_activity_stetoskop">Izbor terapija</string>
@@ -14,7 +14,9 @@
     <string name="podesavanja">Podešavanja</string>
     <string name="ujutru">UJUTRU</string>
     <string name="upodne">U PODNE</string>
-    <string name="uvece">UVEČE</string>
+    <string name="obavestenje">OBAVEŠTENJE</string>
+    <string name="potvrdi">POTVRDI</string>
+    <string name="uvece">UVECE</string>
     <string name="opciono">OPCIONO</string>
     <string name="un">Unesite broj:</string>
     <string name="rodjenjdani">RODJENDANI</string>
@@ -75,5 +77,6 @@
     <string name="title_activity_podaci_lekar">Zakazani pregledi</string>
     <string name="title_activity_podaci_slava">Slave</string>
     <string name="title_activity_podaci_pomen">Pomeni</string>
+    <string name="title_activity_notification">Obavestenje</string>
 
 </resources>

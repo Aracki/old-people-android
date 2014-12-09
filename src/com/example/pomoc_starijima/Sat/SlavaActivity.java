@@ -1,10 +1,17 @@
 package com.example.pomoc_starijima.Sat;
 
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+
 import baze.SQLiteSlave;
 
 import com.example.pomoc_starijima.R;
 import android.app.Activity;
+import android.app.AlarmManager;
 import android.app.DialogFragment;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -26,6 +33,8 @@ public class SlavaActivity extends Activity {
 	DatePicker datum;
 	private Handler mHandler = new Handler();
 	SQLiteSlave db;
+	static AlarmManager alarmSlave;
+	int brojac = 20000;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +48,7 @@ public class SlavaActivity extends Activity {
 
 		final Animation animDugme = AnimationUtils.loadAnimation(this,
 				R.anim.anim_alpha);
+		alarmSlave = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
 
 		nazad.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -75,6 +85,7 @@ public class SlavaActivity extends Activity {
 				String imeSlave = unosIme.getText().toString();
 				String koSlavi = unosKo.getText().toString();
 				String datum = ispis.getText().toString();
+				String[] datumNiz = datum.split("/");
 
 				if (imeSlave.equals("") || koSlavi.equals("")
 						|| datum.equals("")) {
@@ -88,6 +99,18 @@ public class SlavaActivity extends Activity {
 							"USPEŠNO STE SAČUVALI SLAVU", Toast.LENGTH_LONG);
 					t1.show();
 				}
+				String poruka = imeSlave+" \n"+"KO SVE SLAVI? \n"+koSlavi;
+				Intent alarmIntent = new Intent(getBaseContext(),Receiver.class);
+				int rqs = brojac + Integer.parseInt(db.vratiSlavu());
+				alarmIntent.putExtra("Poruka", poruka);
+				alarmIntent.putExtra("ID", Integer.toString(rqs));
+				alarmIntent.putExtra("Datum", datum);
+				alarmIntent.putExtra("TipReceiver", "ReceiverS");
+				PendingIntent sender = PendingIntent
+						.getBroadcast(getBaseContext(), rqs,
+								alarmIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+				pokreniAlarm(sender, Integer.parseInt(datumNiz[0]), Integer.parseInt(datumNiz[1]));
+
 				finish();
 			}
 		});
@@ -104,5 +127,43 @@ public class SlavaActivity extends Activity {
 		sacuvaj = (Button) findViewById(R.id.btnSacuvajBroj);
 		nazad = (Button) findViewById(R.id.btnNazadRodjendan);
 	}
+	
+	private void pokreniAlarm(PendingIntent pi, int dan1, int mesec1) {
+		GregorianCalendar calNow = (GregorianCalendar) GregorianCalendar.getInstance();
+		GregorianCalendar calSet = (GregorianCalendar) GregorianCalendar.getInstance();
+			
+		int godina = calNow.get(Calendar.YEAR);
+		int dan = dan1;
+		int mesec = mesec1 - 1;
+//		int sat = 11;
+//		int minut = 00;
+		int sat = 11;
+		int minut = 0;
+	
+		calSet.set(godina, mesec, dan, sat, minut);
+		
+		if (calSet.before(calNow)){
+			calSet.set(godina +1 , mesec, dan, sat, minut);
+			
+			
+		}
+
+		alarmSlave.set(AlarmManager.RTC_WAKEUP,calSet.getTimeInMillis(),pi);
+		
+
+	}
+	
+	public static void cancelAlarm(int rqs, Context ctx)
+	{
+		Intent alarmIntent = new Intent(
+				ctx,
+				Receiver.class);
+		PendingIntent sender = PendingIntent
+				.getBroadcast(ctx, rqs,
+						alarmIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+		alarmSlave.cancel(sender);
+		
+	}
+
 
 }

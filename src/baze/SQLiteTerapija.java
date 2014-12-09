@@ -92,23 +92,7 @@ public class SQLiteTerapija extends SQLiteOpenHelper {
 		return x;
 	}
 
-	// public String vratiTerapiju1() {
-	//
-	// SQLiteDatabase db = this.getReadableDatabase();
-	//
-	// Cursor y = db.query(TABLE_TERAPIJA, COLUMNS, null,
-	// null, null, null, null, null);
-	// String x = "";
-	//
-	// //x += Integer.toString(y.getCount());
-	// if (y.moveToNext()) {
-	// x += y.getString(0) +":::"+ y.getString(1) + ":::" + y.getString(2) +
-	// ":::"
-	// + y.getString(3) + ":::" + y.getString(4) + " |||";
-	// }
-	//
-	// return x;
-	// }
+
 
 	public Cursor queueAll() {
 		SQLiteDatabase db = this.getWritableDatabase();

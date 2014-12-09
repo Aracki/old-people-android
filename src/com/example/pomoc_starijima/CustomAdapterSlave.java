@@ -39,7 +39,7 @@ public class CustomAdapterSlave extends ArrayAdapter<_Slava> {
 			TextView tv1 = (TextView) v.findViewById(R.id.title1);
 
 			if (tv1 != null) {
-				tv1.setText(s.getImeSlave()+ " -- " + s.getDay()+ "/" + s.getMonth()+ " "+s.getKoSlavi());
+				tv1.setText(s.getImeSlave()+ " " + s.getDay()+ "/" + s.getMonth()+ " "+s.getKoSlavi());
 			}
 		}
 

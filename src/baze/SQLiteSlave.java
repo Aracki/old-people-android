@@ -40,6 +40,20 @@ public class SQLiteSlave extends SQLiteOpenHelper {
 				+ "ko_slavi TEXT)";
 		db.execSQL(c);
 	}
+	
+	public String vratiSlavu() {
+
+		SQLiteDatabase db = this.getReadableDatabase();
+
+		Cursor y = db.query(TABLE_SLAVE, COLUMNS, null,
+				 null, null, null, null, null);
+		
+		y.moveToLast();
+
+		String x = y.getString(0);
+
+		return x;
+	}
 
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
@@ -48,27 +62,7 @@ public class SQLiteSlave extends SQLiteOpenHelper {
 		onCreate(db);
 	}
 
-	// public int updatePrimer(String primer, int id) {
-	//
-	// // 1. get reference to writable DB
-	// SQLiteDatabase db = this.getWritableDatabase();
-	//
-	// // 2. create ContentValues to add key "column"/value
-	// ContentValues values = new ContentValues();
-	// values.put("primerID", primer);
-	//
-	// // 3. updating row
-	// int i = db.update(TABLE_PRIMERI, // table
-	// values, // column/value
-	// "id=?", // selections
-	// new String[] { String.valueOf(id) }); // selection
-	// // args
-	// Log.d(primer, "nja nja nja");
-	// // 4. close
-	// db.close();
-	//
-	// return i;
-	// }
+
 
 	public void dodajSlavu(String i, String d, String ko) {
 		SQLiteDatabase db = this.getWritableDatabase();
@@ -90,36 +84,6 @@ public class SQLiteSlave extends SQLiteOpenHelper {
 		db.close();
 	}
 
-//	public String vratiSlavu(int id) {
-//
-//		SQLiteDatabase db = this.getReadableDatabase();
-//
-//		Cursor y = db.query(TABLE_SLAVE, COLUMNS, "id=?",
-//				new String[] { String.valueOf(id) }, null, null, null, null);
-//
-//		String x = "";
-//
-//		if (y.moveToNext()) {
-//			x = y.getString(0)+":::" +y.getString(1) + ":::" + y.getString(2) + ":::"
-//					+ y.getString(3);
-//		}
-//
-//		return x;
-//	}
-
-//	public int vratiBrojSlava() {
-//
-//		String brojQuery = "SELECT * FROM " + TABLE_SLAVE;
-//
-//		SQLiteDatabase db = this.getReadableDatabase();
-//		Cursor cursor = db.rawQuery(brojQuery, null);
-//
-//		int broj = cursor.getCount();
-//		cursor.close();
-//		db.close();
-//		return broj;
-//
-//	}
 	
 	public List<_Slava> vratiSveSlave() {
 
@@ -144,6 +108,19 @@ public class SQLiteSlave extends SQLiteOpenHelper {
 		
 		return slave;
 
+	}
+
+	public Cursor queueAll() {
+		SQLiteDatabase db = this.getWritableDatabase();
+		return db.query(getTableSlave(), getColumns(), null, null, null,
+				null, null, null);
+
+	}
+	private String getTableSlave() {
+		return TABLE_SLAVE;
+	}
+	public static String[] getColumns() {
+		return COLUMNS;
 	}
 
 }

@@ -47,27 +47,7 @@ public class SQLiteRodjendani extends SQLiteOpenHelper {
 		onCreate(db);
 	}
 
-	// public int updatePrimer(String primer, int id) {
-	//
-	// // 1. get reference to writable DB
-	// SQLiteDatabase db = this.getWritableDatabase();
-	//
-	// // 2. create ContentValues to add key "column"/value
-	// ContentValues values = new ContentValues();
-	// values.put("primerID", primer);
-	//
-	// // 3. updating row
-	// int i = db.update(TABLE_PRIMERI, // table
-	// values, // column/value
-	// "id=?", // selections
-	// new String[] { String.valueOf(id) }); // selection
-	// // args
-	// Log.d(primer, "nja nja nja");
-	// // 4. close
-	// db.close();
-	//
-	// return i;
-	// }
+	
 
 	public void dodajRodjendan(String i, String p, String datum) {
 		SQLiteDatabase db = this.getWritableDatabase();
@@ -89,36 +69,7 @@ public class SQLiteRodjendani extends SQLiteOpenHelper {
 		db.close();
 	}
 
-	// public String vratiRodjendan(int id) {
-	//
-	// SQLiteDatabase db = this.getReadableDatabase();
-	//
-	// Cursor y = db.query(TABLE_RODJENDANI, COLUMNS, "id=?",
-	// new String[] { String.valueOf(id) }, null, null, null, null);
-	//
-	// String x = "";
-	//
-	// if (y.moveToNext()) {
-	// x =y.getString(0)+":::"+ y.getString(1) + ":::" + y.getString(2) + ":::"
-	// + y.getString(3);
-	// }
-	//
-	// return x;
-	// }
 
-	// public int vratiBrojRodjendana() {
-	//
-	// String brojQuery = "SELECT * FROM " + TABLE_RODJENDANI;
-	//
-	// SQLiteDatabase db = this.getReadableDatabase();
-	// Cursor cursor = db.rawQuery(brojQuery, null);
-	//
-	// int broj = cursor.getCount();
-	// cursor.close();
-	// db.close();
-	// return broj;
-	//
-	// }
 
 	public List<_Rodjendan> vratiSveRodjendane() {
 
@@ -149,4 +100,33 @@ public class SQLiteRodjendani extends SQLiteOpenHelper {
 		}
 		return rodjendani;
 	}
+	
+	public String vratiRodjendan() {
+
+		SQLiteDatabase db = this.getReadableDatabase();
+
+		Cursor y = db.query(TABLE_RODJENDANI, COLUMNS, null,
+				 null, null, null, null, null);
+		
+		y.moveToLast();
+
+		String x = y.getString(0);
+
+		return x;
+	}
+	
+	public Cursor queueAll() {
+		SQLiteDatabase db = this.getWritableDatabase();
+		return db.query(getTableRodjedani(), getColumns(), null, null, null,
+				null, null, null);
+
+	}
+	private String getTableRodjedani() {
+		return TABLE_RODJENDANI;
+	}
+	public static String[] getColumns() {
+		return COLUMNS;
+	}
+
+
 }

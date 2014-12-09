@@ -64,6 +64,8 @@ public class PodaciLekarActivity extends Activity {
 										// Log.d("id",
 										// Integer.toString(r.getId()));
 										db.obrisiPregled(p.getId());
+										int rqs = 30000+p.getId();
+										PreglediActivity.cancelAlarm(rqs, getBaseContext());
 										napuniPreglede();
 										finish();
 
@@ -92,28 +94,6 @@ public class PodaciLekarActivity extends Activity {
 			}
 		});
 	}
-
-	// private void inicijalizuj() {
-	// listaRodjendana = (ListView) findViewById(R.id.listaRodjendana);
-	//
-	// int ukupanBroj = db.vratiBrojRodjendana();
-	//
-	// String[] poruke = new String[ukupanBroj];
-	// if (ukupanBroj > 0) {
-	//
-	// for (int i = 0; i < ukupanBroj; i++) {
-	// poruke[i] = db.vratiRodjendan(i + 1);
-	// }
-	//
-	// ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(this,
-	// R.layout.list_row, R.id.title, poruke);
-	//
-	// listaRodjendana.setAdapter(adapter1);
-	// } else {
-	//
-	// }
-	//
-	// }
 
 	private void initialize() {
 		listaPregleda = (ListView) findViewById(R.id.listaPregleda);
