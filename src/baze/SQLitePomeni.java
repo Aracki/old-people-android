@@ -47,29 +47,7 @@ public class SQLitePomeni extends SQLiteOpenHelper {
 		onCreate(db);
 	}
 	
-	
 
-	// public int updatePrimer(String primer, int id) {
-	//
-	// // 1. get reference to writable DB
-	// SQLiteDatabase db = this.getWritableDatabase();
-	//
-	// // 2. create ContentValues to add key "column"/value
-	// ContentValues values = new ContentValues();
-	// values.put("primerID", primer);
-	//
-	// // 3. updating row
-	// int i = db.update(TABLE_PRIMERI, // table
-	// values, // column/value
-	// "id=?", // selections
-	// new String[] { String.valueOf(id) }); // selection
-	// // args
-	// Log.d(primer, "nja nja nja");
-	// // 4. close
-	// db.close();
-	//
-	// return i;
-	// }
 
 	public void dodajPomen(String ime, String mesto, String datum) {
 		SQLiteDatabase db = this.getWritableDatabase();
@@ -78,7 +56,6 @@ public class SQLitePomeni extends SQLiteOpenHelper {
 		values.put("ime", ime);
 		values.put("mesto", mesto);
 		values.put("datum", datum);
-
 		db.insert(TABLE_POMENI, null, values);
 		db.close();
 	}
@@ -116,36 +93,32 @@ public class SQLitePomeni extends SQLiteOpenHelper {
 
 	}
 
-//	public String vratiPomeni(int id) {
-//
-//		SQLiteDatabase db = this.getReadableDatabase();
-//
-//		Cursor y = db.query(TABLE_POMENI, COLUMNS, "id=?",
-//				new String[] { String.valueOf(id) }, null, null, null, null);
-//
-//		String x = "";
-//
-//		if (y.moveToNext()) {
-//			x = y.getString(0)+":::"+ y.getString(1) + ":::" + y.getString(2) + ":::"
-//					+ y.getString(3);
-//		}
-//
-//		return x;
-//	}
+	public String vratiPomen() {
 
-//	public int vratiBrojPomena() {
-//
-//		String brojQuery = "SELECT * FROM " + TABLE_POMENI;
-//
-//		SQLiteDatabase db = this.getReadableDatabase();
-//		Cursor cursor = db.rawQuery(brojQuery, null);
-//
-//		int broj = cursor.getCount();
-//		cursor.close();
-//		db.close();
-//		return broj;
-//
-//	}
+		SQLiteDatabase db = this.getReadableDatabase();
+
+		Cursor y = db.query(TABLE_POMENI, COLUMNS, null,
+				 null, null, null, null, null);
+		
+		y.moveToLast();
+
+		String x = y.getString(0);
+
+		return x;
+	}
+
+	public Cursor queueAll() {
+		SQLiteDatabase db = this.getWritableDatabase();
+		return db.query(getTablePomeni(), getColumns(), null, null, null,
+				null, null, null);
+
+	}
+	private String getTablePomeni() {
+		return TABLE_POMENI;
+	}
+	public static String[] getColumns() {
+		return COLUMNS;
+	}
 
 }
 

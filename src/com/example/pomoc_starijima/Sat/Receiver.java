@@ -115,6 +115,30 @@ public class Receiver extends BroadcastReceiver {
 			
 			 }
 		 
+		 if (tipReceiver.equals("ReceiverP")){
+			 Intent resultIntent = new Intent(ctxt, NotificationActivity.class);
+			 
+			 resultIntent.putExtra("Poruka", extras.getString("Poruka"));
+			 resultIntent.putExtra("Naslov", "POMEN");
+			 resultIntent.putExtra("Datum", extras.getString("Datum"));
+			 resultIntent.putExtra("IDAlarm", "5_Pomeni");
+			 resultIntent.putExtra("ID", extras.getString("ID"));
+			 String[] nizPoruka = extras.getString("Poruka").split(" ");
+			 PendingIntent resultPendingIntent =
+			     PendingIntent.getActivity(ctxt, 0, resultIntent, PendingIntent.FLAG_UPDATE_CURRENT); 
+			 builder
+	         .setContentTitle("POMEN")
+	         .setContentText(nizPoruka[0])
+	         .setSmallIcon(R.drawable.ic_popup_reminder)
+	         .setContentIntent(resultPendingIntent)
+			 .setVibrate(quickBurstsExtended)
+			 .setLights(Color.CYAN, 500, 100)
+			 .setAutoCancel(true)
+			 .setWhen(System.currentTimeMillis());
+			 
+			
+			 }
+		 
 		 Notification n = builder.build();
 //		 n.flags = Notification.FLAG_AUTO_CANCEL | Notification.FLAG_SHOW_LIGHTS;
 		

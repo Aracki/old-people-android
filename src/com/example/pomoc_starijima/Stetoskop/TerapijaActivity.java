@@ -408,11 +408,11 @@ public class TerapijaActivity extends Activity {
 		if (calSet.before(calNow)){
 			calSet.add(Calendar.DATE, 1);
 			alarm.setRepeating(AlarmManager.RTC_WAKEUP, calSet.getTimeInMillis(),
-					AlarmManager.INTERVAL_FIFTEEN_MINUTES, pi);	
+					AlarmManager.INTERVAL_DAY, pi);	
 					Log.d("If", "u petlji");
 		}		
 		alarm.setRepeating(AlarmManager.RTC_WAKEUP, calSet.getTimeInMillis(),
-				AlarmManager.INTERVAL_FIFTEEN_MINUTES, pi);
+				AlarmManager.INTERVAL_DAY, pi);
 		
 		
 
@@ -563,7 +563,7 @@ public class TerapijaActivity extends Activity {
 		// minut = 30;
 		// break;
 		case 12:
-			sat = 18;
+			sat = 11;
 			minut = 30;
 			pozicijaVreme = 12;
 			break;
@@ -634,10 +634,7 @@ public class TerapijaActivity extends Activity {
 			minut = 00;
 			pozicijaVreme = 11;
 			break;
-		// case 12:
-		// sat = 11;
-		// minut = 30;
-		// break;
+
 		case 12:
 			sat = 17;
 			minut = 30;
@@ -661,7 +658,7 @@ public class TerapijaActivity extends Activity {
 			break;
 		case 2:
 			sat = 18;
-			minut = 22;
+			minut = 30;
 			pozicijaVreme = 2;
 			break;
 
@@ -710,10 +707,6 @@ public class TerapijaActivity extends Activity {
 			minut = 00;
 			pozicijaVreme = 11;
 			break;
-		// case 12:
-		// sat = 11;
-		// minut = 30;
-		// break;
 		case 12:
 			sat = 23;
 			minut = 30;

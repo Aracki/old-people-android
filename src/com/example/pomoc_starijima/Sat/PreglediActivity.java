@@ -154,8 +154,6 @@ public class PreglediActivity extends Activity {
 		int godina = Integer.parseInt(datumNiz[2]);
 		int dan = Integer.parseInt(datumNiz[0]);
 		int mesec = Integer.parseInt(datumNiz[1]) -1;
-//		int sat = 14;
-//		int minut = 00;
 		int sat = 10;
 		int minut = 0;
 	

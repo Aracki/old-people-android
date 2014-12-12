@@ -97,9 +97,9 @@ public class PorukaActivity extends Activity {
 		if (db.vratiBrojPrimera() == 0) {
 			db.dodajPrimer("Hitno me pozovi!");
 			db.dodajPrimer("Kupi mi tri kesice fervexa");
-			db.dodajPrimer("Spremila sam pihtije pozuri!");
+			db.dodajPrimer("Spremila sam rucak pozuri!");
 			db.dodajPrimer("Kupi mi kurir!");
-			db.dodajPrimer("Svaka cast vucicu, digli nam penzije");
+			db.dodajPrimer("Podigni mi penziju u povratku");
 			;
 		}
 

@@ -1,12 +1,20 @@
 package com.example.pomoc_starijima.Sat;
 
+import java.util.GregorianCalendar;
+
 import baze.SQLitePomeni;
+import baze.SQLiteSlave;
 
 import com.example.pomoc_starijima.R;
 import android.app.Activity;
+import android.app.AlarmManager;
 import android.app.DialogFragment;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.Animation;
@@ -26,6 +34,8 @@ public class PomeniActivity extends Activity {
 	Button izaberiDatum, sacuvaj, nazad;
 	private Handler mHandler = new Handler();
 	private SQLitePomeni db = new SQLitePomeni(this);
+	static AlarmManager alarmPomeni;
+	int brojac = 40000;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +56,7 @@ public class PomeniActivity extends Activity {
 		nazad = (Button) findViewById(R.id.btnNazadRodjendan);
 		final Animation animDugme = AnimationUtils.loadAnimation(this,
 				R.anim.anim_alpha);
+		alarmPomeni = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
 
 		nazad.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -82,6 +93,8 @@ public class PomeniActivity extends Activity {
 					String ime = unosIme.getText().toString();
 					String mesto = unosMesto.getText().toString();
 					String datum = ispisDatum.getText().toString();
+					
+					
 
 					@Override
 					public void run() {
@@ -98,12 +111,64 @@ public class PomeniActivity extends Activity {
 									Toast.LENGTH_LONG);
 							t1.show();
 						}
-						// TODO Auto-generated method stub
+						String poruka = ime + " \n" + mesto;
+						Intent alarmIntent = new Intent(getBaseContext(),Receiver.class);
+						int rqs = brojac + Integer.parseInt(db.vratiPomen());
+						alarmIntent.putExtra("Poruka", poruka);
+						alarmIntent.putExtra("ID", Integer.toString(rqs));
+						alarmIntent.putExtra("Datum", datum);
+						alarmIntent.putExtra("TipReceiver", "ReceiverP");
+						PendingIntent sender = PendingIntent
+								.getBroadcast(getBaseContext(), rqs,
+										alarmIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+						pokreniAlarm(sender, datum);
+						
 						finish();
 					}
 				}, 260);
 			}
 		});
+	}
+	
+	private void pokreniAlarm(PendingIntent pi, String datum) {
+		GregorianCalendar calNow = (GregorianCalendar) GregorianCalendar.getInstance();
+		GregorianCalendar calSet = (GregorianCalendar) GregorianCalendar.getInstance();
+		
+		String[] datumNiz = datum.split("/");
+		
+			
+		int godina = Integer.parseInt(datumNiz[2]);
+		int dan = Integer.parseInt(datumNiz[0]);
+		int mesec = Integer.parseInt(datumNiz[1]) -1;
+//		int sat = 9;
+//		int minut = 0;
+		int sat = 9;
+		int minut = 0;
+		
+	
+		calSet.set(godina, mesec, dan, sat, minut);
+		
+		if (calSet.before(calNow)){
+			calSet.set(godina +1 , mesec, dan, sat, minut);
+			Log.d("if:", "Usao u if");
+			
+		}
+
+		alarmPomeni.set(AlarmManager.RTC_WAKEUP,calSet.getTimeInMillis(),pi);
+		Log.d("Datum:", calSet.getTime().toString());
+
+	}
+//	
+	public static void cancelAlarm(int rqs, Context ctx)
+	{
+		Intent alarmIntent = new Intent(
+				ctx,
+				Receiver.class);
+		PendingIntent sender = PendingIntent
+				.getBroadcast(ctx, rqs,
+						alarmIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+		alarmPomeni.cancel(sender);
+		
 	}
 
 	protected void onPause() {

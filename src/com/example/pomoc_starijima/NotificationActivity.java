@@ -89,6 +89,15 @@ public class NotificationActivity extends Activity {
 
 			poruka.setText(naslov+"\n"+poruka1+"\n"+datum+"\n"+vreme);
 		}
+		
+		if(id.equals("5_Pomeni")){
+			String naslov = extras.getString("Naslov");
+			String poruka1 = extras.getString("Poruka");
+			String datum = extras.getString("Datum");
+			
+
+			poruka.setText(naslov+"\n"+poruka1+"\n"+datum);
+		}
 
 
 	}

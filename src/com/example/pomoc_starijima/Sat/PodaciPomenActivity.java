@@ -65,6 +65,8 @@ public class PodaciPomenActivity extends Activity {
 										Log.d("Ime", p.getIme());
 										Log.d("id", Integer.toString(p.getId()));
 										db.obrisiPomen(p.getId());
+										int rqs = 40000+p.getId();
+										PomeniActivity.cancelAlarm(rqs, getBaseContext());
 										napuniPomene();
 										finish();
 

@@ -5,6 +5,7 @@ import java.util.GregorianCalendar;
 
 import com.example.pomoc_starijima.Sat.Receiver;
 
+import baze.SQLitePomeni;
 import baze.SQLitePregledi;
 import baze.SQLiteRodjendani;
 import baze.SQLiteSlave;
@@ -26,10 +27,12 @@ public class AutoStart extends BroadcastReceiver {
 	static SQLiteRodjendani sqlRodjendani;
 	static SQLiteSlave sqlSlave;
 	static SQLitePregledi sqlPregledi;
+	static SQLitePomeni sqlPomeni;
 	static SQLiteDatabase db;
 	int brojacRodjendana = 10000;
 	int brojacSlava = 20000;
 	int brojacPregleda = 30000;
+	int brojacPomena = 40000;
 
 	@Override
 	public void onReceive(Context context, Intent intent) {
@@ -44,7 +47,8 @@ public class AutoStart extends BroadcastReceiver {
 			napuniRodjendane(context);
 			napuniSlave(context);
 			napuniPreglede(context);
-			// SetAlarm(context, aCal);
+			napuniPomene(context);
+	
 
 		}
 	}
@@ -74,7 +78,6 @@ public class AutoStart extends BroadcastReceiver {
 			
 			Intent i = new Intent(ctx, AlarmReceiverTerapija.class);
 			i.putExtra("Terapija", terapija);
-			// OVA LINIJA ISPOD JE FALILA, NIJE PROSLEDIO ID ZA ALARM_RECEIVER_TERAPIJA
 			int id = Integer.parseInt(cursor.getString(0));
 			Log.d("ID", Integer.toString(id));
 			i.putExtra("ID", cursor.getString(0));
@@ -85,11 +88,11 @@ public class AutoStart extends BroadcastReceiver {
 			if (aCal.before(calNow)){
 				aCal.add(Calendar.DATE, 1);
 				am.setRepeating(AlarmManager.RTC_WAKEUP, aCal.getTimeInMillis(),
-						AlarmManager.INTERVAL_FIFTEEN_MINUTES, sender);	
+						AlarmManager.INTERVAL_DAY, sender);	
 						Log.d("If", "u petlji");
 			}	
 			am.setRepeating(AlarmManager.RTC_WAKEUP, aCal.getTimeInMillis(),
-					AlarmManager.INTERVAL_FIFTEEN_MINUTES, sender);
+					AlarmManager.INTERVAL_DAY, sender);
 			
 			
 		}
@@ -116,7 +119,7 @@ public class AutoStart extends BroadcastReceiver {
 				int dan = Integer.parseInt(datumNiz[0]);
 				int mesec = Integer.parseInt(datumNiz[1]) - 1;
 				int sat = 12;
-				int minut = 0;
+				int minut = 00;
 				
 				calSet.set(godina, mesec, dan, sat, minut);
 				
@@ -162,10 +165,9 @@ public class AutoStart extends BroadcastReceiver {
 					int godina = calNow.get(Calendar.YEAR);
 					int dan = Integer.parseInt(datumNiz[0]);
 					int mesec = Integer.parseInt(datumNiz[1]) - 1;
-//					int sat = 11;
-//					int minut = 00;
 					int sat = 11;
-					int minut = 0;
+					int minut = 00;
+	
 
 					
 					calSet.set(godina, mesec, dan, sat, minut);
@@ -211,10 +213,8 @@ public class AutoStart extends BroadcastReceiver {
 					int godina = Integer.parseInt(datumNiz[2]);
 					int dan = Integer.parseInt(datumNiz[0]);
 					int mesec = Integer.parseInt(datumNiz[1]) - 1;
-//					int sat = 13;
-//					int minut = 00;
 					int sat = 10;
-					int minut = 0;
+					int minut = 00;
 
 					calSet.set(godina, mesec, dan, sat, minut);
 					
@@ -240,5 +240,50 @@ public class AutoStart extends BroadcastReceiver {
 			}
 
 			}
+			
+			public void napuniPomene(Context ctx) {
+				sqlPomeni = new SQLitePomeni(ctx);
+				Cursor cursor = sqlPomeni.queueAll();
+				
+				while (cursor.moveToNext()) {
+					
+					
+					String poruka = cursor.getString(1)+" \n"+ cursor.getString(2);
+					String datum = cursor.getString(3);
+					String id = cursor.getString(0);
+					String[] datumNiz = datum.split("/");
+					
+					GregorianCalendar calNow = (GregorianCalendar) GregorianCalendar.getInstance();
+					GregorianCalendar calSet = (GregorianCalendar) GregorianCalendar.getInstance();
+					
+					int godina = Integer.parseInt(datumNiz[2]);
+					int dan = Integer.parseInt(datumNiz[0]);
+					int mesec = Integer.parseInt(datumNiz[1]) - 1;
+					int sat = 9;
+					int minut = 0;
+					
+					calSet.set(godina, mesec, dan, sat, minut);
+					
+					if (calSet.before(calNow)){
+						calSet.set(godina +1 , mesec, dan, sat, minut);
+						Log.d("if:", "Usao u if");				
+					}				
+					Intent i = new Intent(ctx, Receiver.class);
+					i.putExtra("Poruka", poruka);
+					i.putExtra("ID", id);
+					i.putExtra("IDAlarm", "5_Pomeni");
+					i.putExtra("TipReceiver", "ReceiverP");
+					i.putExtra("Datum", datum);
+					int rqs = brojacSlava + Integer.parseInt(cursor.getString(0));
+					PendingIntent sender = PendingIntent.getBroadcast(ctx, rqs, i,
+							PendingIntent.FLAG_UPDATE_CURRENT);
+					AlarmManager am = (AlarmManager) ctx
+							.getSystemService(Context.ALARM_SERVICE);
+					am.set(AlarmManager.RTC_WAKEUP,calSet.getTimeInMillis(),sender);
+					Log.d("POMEN:", calSet.getTime().toString()+" :::"+cursor.getString(0));
+				
+			}
+
+	}
 	
 }
